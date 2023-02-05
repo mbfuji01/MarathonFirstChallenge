@@ -11,7 +11,7 @@ import UIKit
 class AnswerViewController: UIViewController {
 	enum Constants {
 		static let anyVar: String = "anyVar"
-        static let test : String = "Hello"
+        static let test: String = "Hello"
 	}
 	
 	//MARK: - Create UI
