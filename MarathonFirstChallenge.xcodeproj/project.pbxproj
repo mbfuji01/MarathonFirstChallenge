@@ -8,22 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850676A298FF28E0046BC7F /* AppDelegate.swift */; };
-		1850676D298FF28E0046BC7F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850676C298FF28E0046BC7F /* SceneDelegate.swift */; };
-		1850676F298FF28E0046BC7F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850676E298FF28E0046BC7F /* ViewController.swift */; };
-		18506772298FF28E0046BC7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18506770298FF28E0046BC7F /* Main.storyboard */; };
 		18506774298FF28F0046BC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18506773298FF28F0046BC7F /* Assets.xcassets */; };
 		18506777298FF28F0046BC7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18506775298FF28F0046BC7F /* LaunchScreen.storyboard */; };
+		185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067BF298FFA3B0046BC7F /* WelcomeViewController.swift */; };
+		185067C2298FFB090046BC7F /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C1298FFB090046BC7F /* RulesViewController.swift */; };
+		185067C4298FFB150046BC7F /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C3298FFB150046BC7F /* NicknameViewController.swift */; };
+		185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C5298FFB380046BC7F /* MainGameViewController.swift */; };
+		185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C7298FFB420046BC7F /* AnswerViewController.swift */; };
+		185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C9298FFB510046BC7F /* ResultViewController.swift */; };
+		185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */; };
+		185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CE298FFEC50046BC7F /* UIView + Extensions.swift */; };
+		185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067D1298FFF9C0046BC7F /* UIColor+App.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18506767298FF28E0046BC7F /* MarathonFirstChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarathonFirstChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1850676A298FF28E0046BC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1850676C298FF28E0046BC7F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1850676E298FF28E0046BC7F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		18506771298FF28E0046BC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18506773298FF28F0046BC7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18506776298FF28F0046BC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18506778298FF28F0046BC7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		185067BF298FFA3B0046BC7F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		185067C1298FFB090046BC7F /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		185067C3298FFB150046BC7F /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		185067C5298FFB380046BC7F /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
+		185067C7298FFB420046BC7F /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
+		185067C9298FFB510046BC7F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
+		185067CE298FFEC50046BC7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		185067D1298FFF9C0046BC7F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,237 @@
 		18506769298FF28E0046BC7F /* MarathonFirstChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				185067CB298FFBBC0046BC7F /* CommonUI */,
+				185067D0298FFF760046BC7F /* UIConstants */,
+				1850677E298FF2D10046BC7F /* Modules */,
 				1850676A298FF28E0046BC7F /* AppDelegate.swift */,
-				1850676C298FF28E0046BC7F /* SceneDelegate.swift */,
-				1850676E298FF28E0046BC7F /* ViewController.swift */,
-				18506770298FF28E0046BC7F /* Main.storyboard */,
 				18506773298FF28F0046BC7F /* Assets.xcassets */,
 				18506775298FF28F0046BC7F /* LaunchScreen.storyboard */,
 				18506778298FF28F0046BC7F /* Info.plist */,
 			);
 			path = MarathonFirstChallenge;
+			sourceTree = "<group>";
+		};
+		1850677E298FF2D10046BC7F /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				1850677F298FF2D90046BC7F /* WelcomeModule */,
+				18506780298FF4EE0046BC7F /* RulesModule */,
+				18506789298FF68E0046BC7F /* NicknameModule */,
+				1850678F298FF8870046BC7F /* MainGameModule */,
+				1850678E298FF8680046BC7F /* AnswerModule */,
+				18506790298FF9100046BC7F /* ResultModule */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		1850677F298FF2D90046BC7F /* WelcomeModule */ = {
+			isa = PBXGroup;
+			children = (
+				185067AD298FF9B60046BC7F /* Controllers */,
+				185067AF298FF9CA0046BC7F /* Models */,
+				185067AE298FF9C00046BC7F /* Views */,
+			);
+			path = WelcomeModule;
+			sourceTree = "<group>";
+		};
+		18506780298FF4EE0046BC7F /* RulesModule */ = {
+			isa = PBXGroup;
+			children = (
+				185067B2298FF9FC0046BC7F /* Controllers */,
+				185067B1298FF9FC0046BC7F /* Models */,
+				185067B0298FF9FC0046BC7F /* Views */,
+			);
+			path = RulesModule;
+			sourceTree = "<group>";
+		};
+		18506789298FF68E0046BC7F /* NicknameModule */ = {
+			isa = PBXGroup;
+			children = (
+				185067B6298FFA0B0046BC7F /* Controllers */,
+				185067B8298FFA0B0046BC7F /* Models */,
+				185067B7298FFA0B0046BC7F /* Views */,
+			);
+			path = NicknameModule;
+			sourceTree = "<group>";
+		};
+		1850678E298FF8680046BC7F /* AnswerModule */ = {
+			isa = PBXGroup;
+			children = (
+				185067BC298FFA1A0046BC7F /* Controllers */,
+				185067BD298FFA1A0046BC7F /* Models */,
+				185067BE298FFA1A0046BC7F /* Views */,
+			);
+			path = AnswerModule;
+			sourceTree = "<group>";
+		};
+		1850678F298FF8870046BC7F /* MainGameModule */ = {
+			isa = PBXGroup;
+			children = (
+				185067BA298FFA140046BC7F /* Controllers */,
+				185067B9298FFA140046BC7F /* Models */,
+				185067BB298FFA140046BC7F /* Views */,
+			);
+			path = MainGameModule;
+			sourceTree = "<group>";
+		};
+		18506790298FF9100046BC7F /* ResultModule */ = {
+			isa = PBXGroup;
+			children = (
+				185067B5298FFA060046BC7F /* Controllers */,
+				185067B4298FFA060046BC7F /* Models */,
+				185067B3298FFA060046BC7F /* Views */,
+			);
+			path = ResultModule;
+			sourceTree = "<group>";
+		};
+		185067AD298FF9B60046BC7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185067BF298FFA3B0046BC7F /* WelcomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		185067AE298FF9C00046BC7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185067AF298FF9CA0046BC7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		185067B0298FF9FC0046BC7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185067B1298FF9FC0046BC7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		185067B2298FF9FC0046BC7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185067C1298FFB090046BC7F /* RulesViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		185067B3298FFA060046BC7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185067B4298FFA060046BC7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		185067B5298FFA060046BC7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185067C9298FFB510046BC7F /* ResultViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		185067B6298FFA0B0046BC7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185067C3298FFB150046BC7F /* NicknameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		185067B7298FFA0B0046BC7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185067B8298FFA0B0046BC7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		185067B9298FFA140046BC7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		185067BA298FFA140046BC7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185067C5298FFB380046BC7F /* MainGameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		185067BB298FFA140046BC7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185067BC298FFA1A0046BC7F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				185067C7298FFB420046BC7F /* AnswerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		185067BD298FFA1A0046BC7F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		185067BE298FFA1A0046BC7F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		185067CB298FFBBC0046BC7F /* CommonUI */ = {
+			isa = PBXGroup;
+			children = (
+				185067CE298FFEC50046BC7F /* UIView + Extensions.swift */,
+				185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */,
+			);
+			path = CommonUI;
+			sourceTree = "<group>";
+		};
+		185067D0298FFF760046BC7F /* UIConstants */ = {
+			isa = PBXGroup;
+			children = (
+				185067D1298FFF9C0046BC7F /* UIColor+App.swift */,
+			);
+			path = UIConstants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +361,6 @@
 			files = (
 				18506777298FF28F0046BC7F /* LaunchScreen.storyboard in Resources */,
 				18506774298FF28F0046BC7F /* Assets.xcassets in Resources */,
-				18506772298FF28E0046BC7F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +371,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1850676F298FF28E0046BC7F /* ViewController.swift in Sources */,
+				185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */,
+				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
+				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
+				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
+				185067C4298FFB150046BC7F /* NicknameViewController.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,
-				1850676D298FF28E0046BC7F /* SceneDelegate.swift in Sources */,
+				185067C2298FFB090046BC7F /* RulesViewController.swift in Sources */,
+				185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */,
+				185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */,
+				185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		18506770298FF28E0046BC7F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				18506771298FF28E0046BC7F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		18506775298FF28F0046BC7F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +524,7 @@
 				INFOPLIST_FILE = MarathonFirstChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +552,7 @@
 				INFOPLIST_FILE = MarathonFirstChallenge/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
