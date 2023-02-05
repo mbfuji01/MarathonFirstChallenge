@@ -11,6 +11,7 @@ import UIKit
 class MainGameViewController: UIViewController {
 	enum Constants {
 		static let anyVar: String = "anyVar"
+        static let testvalue: String = "test"
 	}
 	
 	//MARK: - Create UI
