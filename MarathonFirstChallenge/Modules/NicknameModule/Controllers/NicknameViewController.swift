@@ -24,6 +24,7 @@ class NicknameViewController: UIViewController {
 	}
 	
 	private func setupViews() {
+		view.backgroundColor = .blue
 		view.backgroundColor = .red
 	}
 	
