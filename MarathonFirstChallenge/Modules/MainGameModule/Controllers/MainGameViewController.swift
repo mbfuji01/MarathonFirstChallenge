@@ -22,7 +22,9 @@ class MainGameViewController: UIViewController {
 	}
 	
 	//MARK: - Create UI
-	//private let backgroundImageView = UIImageView()
+    
+	private let backgroundImageView = UIImageView()
+    private let logoImageView = UIImageView()
     private let tableView = UITableView()
     private var levels: [LevelsModel] = []
     
@@ -43,25 +45,40 @@ class MainGameViewController: UIViewController {
     }
     
 	private func setupViews() {
-        //view.addSubview(backgroundImageView)
-		view.addSubview(tableView)
-        //backgroundImageView.image = UIImage(named: Constants.background)
+        view.addSubview(backgroundImageView)
+		backgroundImageView.addSubview(tableView)
+        backgroundImageView.addSubview(logoImageView)
+        backgroundImageView.image = UIImage(named: Constants.background)
+        logoImageView.image = UIImage(named: Constants.logo)
+        //logoImageView.addShadowOnView()
+        logoImageView.contentMode = .scaleAspectFill
+        
         
 	}
 	
 	private func setConstraints() {
         tableView.rowHeight = 36
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
         
-//        NSLayoutConstraint.activate([
-//            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
-//            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 76),
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: 150),
+            logoImageView.heightAnchor.constraint(equalToConstant: 150),
+        ])
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
 		NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            tableView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: -50),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -130),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
 		])
