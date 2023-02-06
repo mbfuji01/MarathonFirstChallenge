@@ -8,28 +8,47 @@
 import UIKit
 
 class MainGameTableViewCell: UITableViewCell {
-
+    
     var imageViewCell = UIImageView()
     var stackViewCell = UIStackView()
-    var labelQuestion = UILabel()
-    var labelAmountWin = UILabel()
+    var labelQuestion: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
+    }()
+    
+    var labelAmountWin: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(imageViewCell)
-        imageViewCell.addSubview(stackViewCell)
-        stackViewCell.addArrangedSubview(labelQuestion)
-        stackViewCell.addArrangedSubview(labelAmountWin)
-        configerLabel()
-        configureImageView()
-        setImageConstraint()
-        setQuestionLabelConstraint()
-        setAmountWinLabelConstraint()
-        setStack()
+        setupViews()
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupViews() {
+        addSubview(imageViewCell)
+        imageViewCell.addSubview(stackViewCell)
+        stackViewCell.addArrangedSubview(labelQuestion)
+        stackViewCell.addArrangedSubview(labelAmountWin)
+    }
+    
+    func setConstraints() {
+        setImageConstraint()
+        setQuestionLabelConstraint()
+        setAmountWinLabelConstraint()
+        setStackConstraint()
     }
     
     func set(level: LevelsModel) {
@@ -38,34 +57,20 @@ class MainGameTableViewCell: UITableViewCell {
         labelAmountWin.text = "$\(level.winAmount)"
     }
     
-    func configureImageView() {
-//        imageViewCell.layer.cornerRadius = 10
-//        imageViewCell.clipsToBounds = true
-        
-    }
-    
-    func configerLabel() {
-        labelQuestion.textColor = .white
-        labelAmountWin.textColor = .white
-        labelAmountWin.textAlignment = .right
-        labelQuestion.textAlignment = .left
-        labelQuestion.font = UIFont(name: "SF Compact Display", size: 21)
-        labelAmountWin.font = UIFont(name: "SF Compact Display", size: 21)
-    }
-    
     func setImageConstraint() {
         imageViewCell.translatesAutoresizingMaskIntoConstraints = false
-        imageViewCell.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        imageViewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 3).isActive = true
         imageViewCell.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageViewCell.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 3).isActive = true
         imageViewCell.widthAnchor.constraint(equalTo: imageViewCell.widthAnchor, constant: 311).isActive = true
+        imageViewCell.heightAnchor.constraint(equalTo: imageViewCell.heightAnchor, constant: 36).isActive = true
     }
     
-    func setStack() {
+    func setStackConstraint() {
         stackViewCell.translatesAutoresizingMaskIntoConstraints = false
-        stackViewCell.leadingAnchor.constraint(equalTo: imageViewCell.leadingAnchor, constant: 20).isActive = true
-        stackViewCell.trailingAnchor.constraint(equalTo: imageViewCell.trailingAnchor, constant: -20).isActive = true
+        stackViewCell.leadingAnchor.constraint(equalTo: imageViewCell.leadingAnchor, constant: 24).isActive = true
+        stackViewCell.trailingAnchor.constraint(equalTo: imageViewCell.trailingAnchor, constant: -24).isActive = true
         stackViewCell.topAnchor.constraint(equalTo: imageViewCell.topAnchor).isActive = true
     }
     
@@ -78,5 +83,4 @@ class MainGameTableViewCell: UITableViewCell {
         labelAmountWin.trailingAnchor.constraint(equalTo: stackViewCell.trailingAnchor).isActive = true
         labelAmountWin.topAnchor.constraint(equalTo: stackViewCell.topAnchor).isActive = true
     }
-
 }
