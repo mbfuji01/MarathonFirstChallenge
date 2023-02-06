@@ -22,7 +22,7 @@ class MainGameViewController: UIViewController {
 	}
 	
 	//MARK: - Create UI
-	private let backgroundImage = UIImageView()
+	//private let backgroundImageView = UIImageView()
     private let tableView = UITableView()
     private var levels: [LevelsModel] = []
     
@@ -31,19 +31,54 @@ class MainGameViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         levels = fetchData()
+        setupTableViewDelegetes()
 		setupViews()
 		setConstraints()
+        tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
 	}
 	
+    func setupTableViewDelegetes() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
 	private func setupViews() {
-		view.backgroundColor = .red
+        //view.addSubview(backgroundImageView)
+		view.addSubview(tableView)
+        //backgroundImageView.image = UIImage(named: Constants.background)
+        
 	}
 	
 	private func setConstraints() {
+        tableView.rowHeight = 36
+        
+//        NSLayoutConstraint.activate([
+//            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+//            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+//        ])
+        
 		NSLayoutConstraint.activate([
-		
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
 		])
 	}
+}
+
+extension MainGameViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return levels.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.levelCell, for: indexPath) as! MainGameTableViewCell
+        let level = levels[indexPath.row]
+        cell.set(level: level)
+        return cell
+    }
 }
 
 extension MainGameViewController {
