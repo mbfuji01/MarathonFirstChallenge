@@ -1,14 +1,14 @@
 //
-//  RulesViewController.swift
+//  SplashViewController.swift
 //  MarathonFirstChallenge
 //
-//  Created by demasek on 05.02.2023.
+//  Created by demasek on 06.02.2023.
 //
 
 import Foundation
 import UIKit
 
-class RulesViewController: UIViewController {
+class SplashViewController: UIViewController {
 	enum Constants {
 		static let anyVar: String = "anyVar"
 	}
