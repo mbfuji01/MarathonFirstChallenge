@@ -12,4 +12,32 @@ extension UIColor {
 	static var whiteTitleColor: UIColor {
 		UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 	}
+	
+	static var descriptionTitleColor: UIColor {
+		UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
+	}
+	
+	static var timerBackgroundWhiteColor: UIColor {
+		UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+	}
+	
+	static var timerItemWhiteColor: UIColor {
+		UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+	}
+	
+	static var timerBackgroundYellowColor: UIColor {
+		UIColor(red: 1, green: 0.66, blue: 0, alpha: 0.3)
+	}
+	
+	static var timerItemYellowColor: UIColor {
+		UIColor(red: 1, green: 0.702, blue: 0.25, alpha: 1)
+	}
+	
+	static var timerBackgroundRedColor: UIColor {
+		UIColor(red: 0.514, green: 0.133, blue: 0.012, alpha: 0.5)
+	}
+	
+	static var timerItemRedColor: UIColor {
+		UIColor(red: 1, green: 0.384, blue: 0.192, alpha: 1)
+	}
 }
