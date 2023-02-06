@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182D35362991509300D7126A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D35352991509300D7126A /* SplashViewController.swift */; };
 		1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850676A298FF28E0046BC7F /* AppDelegate.swift */; };
 		18506774298FF28F0046BC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18506773298FF28F0046BC7F /* Assets.xcassets */; };
 		18506777298FF28F0046BC7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18506775298FF28F0046BC7F /* LaunchScreen.storyboard */; };
 		185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067BF298FFA3B0046BC7F /* WelcomeViewController.swift */; };
-		185067C2298FFB090046BC7F /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C1298FFB090046BC7F /* RulesViewController.swift */; };
-		185067C4298FFB150046BC7F /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C3298FFB150046BC7F /* NicknameViewController.swift */; };
 		185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C5298FFB380046BC7F /* MainGameViewController.swift */; };
 		185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C7298FFB420046BC7F /* AnswerViewController.swift */; };
 		185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067C9298FFB510046BC7F /* ResultViewController.swift */; };
@@ -22,14 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182D35352991509300D7126A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		18506767298FF28E0046BC7F /* MarathonFirstChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarathonFirstChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1850676A298FF28E0046BC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18506773298FF28F0046BC7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18506776298FF28F0046BC7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18506778298FF28F0046BC7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		185067BF298FFA3B0046BC7F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		185067C1298FFB090046BC7F /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
-		185067C3298FFB150046BC7F /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
 		185067C5298FFB380046BC7F /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
 		185067C7298FFB420046BC7F /* AnswerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerViewController.swift; sourceTree = "<group>"; };
 		185067C9298FFB510046BC7F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +47,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182D35312991506100D7126A /* SplashModule */ = {
+			isa = PBXGroup;
+			children = (
+				182D35342991507D00D7126A /* Controllers */,
+				182D35332991507800D7126A /* Views */,
+				182D35322991506C00D7126A /* Models */,
+			);
+			path = SplashModule;
+			sourceTree = "<group>";
+		};
+		182D35322991506C00D7126A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		182D35332991507800D7126A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		182D35342991507D00D7126A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				182D35352991509300D7126A /* SplashViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		1850675E298FF28E0046BC7F = {
 			isa = PBXGroup;
 			children = (
@@ -82,9 +112,8 @@
 		1850677E298FF2D10046BC7F /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				182D35312991506100D7126A /* SplashModule */,
 				1850677F298FF2D90046BC7F /* WelcomeModule */,
-				18506780298FF4EE0046BC7F /* RulesModule */,
-				18506789298FF68E0046BC7F /* NicknameModule */,
 				1850678F298FF8870046BC7F /* MainGameModule */,
 				1850678E298FF8680046BC7F /* AnswerModule */,
 				18506790298FF9100046BC7F /* ResultModule */,
@@ -100,26 +129,6 @@
 				185067AE298FF9C00046BC7F /* Views */,
 			);
 			path = WelcomeModule;
-			sourceTree = "<group>";
-		};
-		18506780298FF4EE0046BC7F /* RulesModule */ = {
-			isa = PBXGroup;
-			children = (
-				185067B2298FF9FC0046BC7F /* Controllers */,
-				185067B1298FF9FC0046BC7F /* Models */,
-				185067B0298FF9FC0046BC7F /* Views */,
-			);
-			path = RulesModule;
-			sourceTree = "<group>";
-		};
-		18506789298FF68E0046BC7F /* NicknameModule */ = {
-			isa = PBXGroup;
-			children = (
-				185067B6298FFA0B0046BC7F /* Controllers */,
-				185067B8298FFA0B0046BC7F /* Models */,
-				185067B7298FFA0B0046BC7F /* Views */,
-			);
-			path = NicknameModule;
 			sourceTree = "<group>";
 		};
 		1850678E298FF8680046BC7F /* AnswerModule */ = {
@@ -174,28 +183,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		185067B0298FF9FC0046BC7F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		185067B1298FF9FC0046BC7F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		185067B2298FF9FC0046BC7F /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				185067C1298FFB090046BC7F /* RulesViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		185067B3298FFA060046BC7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,28 +203,6 @@
 				185067C9298FFB510046BC7F /* ResultViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		185067B6298FFA0B0046BC7F /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				185067C3298FFB150046BC7F /* NicknameViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		185067B7298FFA0B0046BC7F /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		185067B8298FFA0B0046BC7F /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		185067B9298FFA140046BC7F /* Models */ = {
@@ -375,12 +340,11 @@
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
 				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
-				185067C4298FFB150046BC7F /* NicknameViewController.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,
-				185067C2298FFB090046BC7F /* RulesViewController.swift in Sources */,
 				185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */,
 				185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */,
 				185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */,
+				182D35362991509300D7126A /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
