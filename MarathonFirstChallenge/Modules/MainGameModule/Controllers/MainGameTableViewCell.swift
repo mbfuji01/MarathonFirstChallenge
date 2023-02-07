@@ -9,13 +9,20 @@ import UIKit
 
 class MainGameTableViewCell: UITableViewCell {
     
+    enum Constants {
+        static let labelFontSize = 18.0
+        static let borderCellSize = 3.0
+        static let stackViewLeadingSpasing = 24.0
+        static let stackViewTrailingSpasing = -24.0
+    }
+    
     var imageViewCell = UIImageView()
     var stackViewCell = UIStackView()
     var labelQuestion: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: Constants.labelFontSize, weight: .semibold)
         return label
     }()
     
@@ -23,7 +30,7 @@ class MainGameTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
-        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: Constants.labelFontSize, weight: .semibold)
         return label
     }()
     
@@ -59,19 +66,18 @@ class MainGameTableViewCell: UITableViewCell {
     
     func setImageConstraint() {
         imageViewCell.translatesAutoresizingMaskIntoConstraints = false
-        imageViewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 3).isActive = true
+        imageViewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.borderCellSize).isActive = true
         imageViewCell.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageViewCell.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 3).isActive = true
-        imageViewCell.widthAnchor.constraint(equalTo: imageViewCell.widthAnchor, constant: 311).isActive = true
-        imageViewCell.heightAnchor.constraint(equalTo: imageViewCell.heightAnchor, constant: 36).isActive = true
+        imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.borderCellSize).isActive = true
     }
     
     func setStackConstraint() {
         stackViewCell.translatesAutoresizingMaskIntoConstraints = false
-        stackViewCell.leadingAnchor.constraint(equalTo: imageViewCell.leadingAnchor, constant: 24).isActive = true
-        stackViewCell.trailingAnchor.constraint(equalTo: imageViewCell.trailingAnchor, constant: -24).isActive = true
+        stackViewCell.leadingAnchor.constraint(equalTo: imageViewCell.leadingAnchor, constant: Constants.stackViewLeadingSpasing).isActive = true
+        stackViewCell.trailingAnchor.constraint(equalTo: imageViewCell.trailingAnchor, constant: Constants.stackViewTrailingSpasing).isActive = true
         stackViewCell.topAnchor.constraint(equalTo: imageViewCell.topAnchor).isActive = true
+        stackViewCell.bottomAnchor.constraint(equalTo: imageViewCell.bottomAnchor).isActive = true
     }
     
     func setQuestionLabelConstraint() {
