@@ -9,27 +9,35 @@ import Foundation
 import UIKit
 
 class SplashViewController: UIViewController {
-	enum Constants {
-		static let anyVar: String = "anyVar"
-	}
-	
-	//MARK: - Create UI
-	
-	//MARK: - Lifecycle
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setupViews()
-		setConstraints()
-	}
-	
-	private func setupViews() {
-		view.backgroundColor = .red
-	}
-	
-	private func setConstraints() {
-		NSLayoutConstraint.activate([
-		
-		])
-	}
+    enum Constants {
+        static let anyVar: String = "anyVar"
+    }
+    
+    //MARK: - Create UI
+    
+    private let imageView: UIImageView = {
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "background_image")
+            return imageView
+        }()
+    
+    //MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(imageView)
+        setupViews()
+        setConstraints()
+        
+    }
+    
+    private func setupViews() {
+        //view.backgroundColor = .red
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+        
+        ])
+    }
 }
