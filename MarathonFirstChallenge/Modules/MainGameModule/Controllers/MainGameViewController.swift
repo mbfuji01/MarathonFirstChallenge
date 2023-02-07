@@ -22,7 +22,6 @@ class MainGameViewController: UIViewController {
         static let logoViewTopSpacing: CGFloat = 40.0
         static let logoViewHeight: CGFloat = 150.0
         static let logoViewWidth: CGFloat = 150.0
-        
     }
     
     //MARK: - Create UI
