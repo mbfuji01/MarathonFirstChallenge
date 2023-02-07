@@ -48,6 +48,12 @@ class MainGameTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func set(level: LevelsModel) {
+        imageViewCell.image = UIImage(named: level.image)
+        labelQuestion.text = "\(level.numberOfQuestion):"
+        labelAmountWin.text = "$\(level.winAmount)"
+    }
+    
     private func setupViews() {
         addSubview(imageViewCell)
         imageViewCell.addSubview(stackViewCell)
@@ -80,11 +86,5 @@ class MainGameTableViewCell: UITableViewCell {
             stackViewCell.topAnchor.constraint(equalTo: imageViewCell.topAnchor),
             stackViewCell.bottomAnchor.constraint(equalTo: imageViewCell.bottomAnchor)
         ])
-    }
-    
-    func set(level: LevelsModel) {
-        imageViewCell.image = UIImage(named: level.image)
-        labelQuestion.text = "\(level.numberOfQuestion):"
-        labelAmountWin.text = "$\(level.winAmount)"
     }
 }

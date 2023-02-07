@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		030D2D78299169E700254BD7 /* LevelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D2D77299169E700254BD7 /* LevelsModel.swift */; };
 		030D2D7A29916D5C00254BD7 /* MainGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */; };
+		03A904532992EAAD000FDF1F /* FetchDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A904522992EAAD000FDF1F /* FetchDataModel.swift */; };
 		182D35362991509300D7126A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D35352991509300D7126A /* SplashViewController.swift */; };
 		1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850676A298FF28E0046BC7F /* AppDelegate.swift */; };
 		18506774298FF28F0046BC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18506773298FF28F0046BC7F /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		030D2D77299169E700254BD7 /* LevelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsModel.swift; sourceTree = "<group>"; };
 		030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameTableViewCell.swift; sourceTree = "<group>"; };
+		03A904522992EAAD000FDF1F /* FetchDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDataModel.swift; sourceTree = "<group>"; };
 		182D35352991509300D7126A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		18506767298FF28E0046BC7F /* MarathonFirstChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarathonFirstChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1850676A298FF28E0046BC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 		185067B9298FFA140046BC7F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				03A904522992EAAD000FDF1F /* FetchDataModel.swift */,
 				030D2D77299169E700254BD7 /* LevelsModel.swift */,
 			);
 			path = Models;
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03A904532992EAAD000FDF1F /* FetchDataModel.swift in Sources */,
 				185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */,
 				030D2D7A29916D5C00254BD7 /* MainGameTableViewCell.swift in Sources */,
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
