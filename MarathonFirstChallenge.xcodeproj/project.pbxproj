@@ -221,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				185067C5298FFB380046BC7F /* MainGameViewController.swift */,
-				030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -229,6 +228,7 @@
 		185067BB298FFA140046BC7F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
