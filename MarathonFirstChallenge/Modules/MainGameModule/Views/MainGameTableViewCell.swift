@@ -8,27 +8,25 @@
 import UIKit
 
 class MainGameTableViewCell: UITableViewCell {
-    
     enum Constants {
         static let labelFontSize = 18.0
         static let borderCellSize = 3.0
-        static let stackViewLeadingSpasing = 24.0
-        static let stackViewTrailingSpasing = -24.0
+        static let stackViewSideSpacing = 24.0
     }
  
     //MARK: - Create UI
     
-    private lazy var imageViewCell = UIImageView()
-    private lazy var stackViewCell = UIStackView()
-    private lazy var labelQuestion: UILabel = {
+    private lazy var cellImageView = UIImageView()
+    private lazy var cellStackView = UIStackView()
+    private lazy var questionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .white
+        label.textColor = .whiteTitleColor
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: Constants.labelFontSize, weight: .semibold)
         return label
     }()
     
-    private lazy var labelAmountWin: UILabel = {
+    private lazy var winAmountLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .right
@@ -48,43 +46,43 @@ class MainGameTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(level: LevelsModel) {
-        imageViewCell.image = UIImage(named: level.image)
-        labelQuestion.text = "\(level.numberOfQuestion):"
-        labelAmountWin.text = "$\(level.winAmount)"
+    func setViewModel(level: LevelsModel) {
+        cellImageView.image = UIImage(named: level.image)
+        questionLabel.text = "\(level.numberOfQuestion):"
+        winAmountLabel.text = "$\(level.winAmount)"
     }
     
     private func setupViews() {
-        addSubview(imageViewCell)
-        imageViewCell.addSubview(stackViewCell)
-        stackViewCell.addArrangedSubview(labelQuestion)
-        stackViewCell.addArrangedSubview(labelAmountWin)
+        addSubview(cellImageView)
+        cellImageView.addSubview(cellStackView)
+        cellStackView.addArrangedSubview(questionLabel)
+        cellStackView.addArrangedSubview(winAmountLabel)
     }
     
     private func setConstraints() {
-        imageViewCell.translatesAutoresizingMaskIntoConstraints = false
+        cellImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageViewCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.borderCellSize),
-            imageViewCell.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageViewCell.topAnchor.constraint(equalTo: topAnchor),
-            imageViewCell.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.borderCellSize)
+            cellImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.borderCellSize),
+            cellImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            cellImageView.topAnchor.constraint(equalTo: topAnchor),
+            cellImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.borderCellSize)
         ])
-        labelQuestion.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelQuestion.leadingAnchor.constraint(equalTo: stackViewCell.leadingAnchor),
-            labelQuestion.centerYAnchor.constraint(equalTo: centerYAnchor)
+            questionLabel.leadingAnchor.constraint(equalTo: cellStackView.leadingAnchor),
+            questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
-        labelAmountWin.translatesAutoresizingMaskIntoConstraints = false
+        winAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            labelAmountWin.trailingAnchor.constraint(equalTo: stackViewCell.trailingAnchor),
-            labelAmountWin.topAnchor.constraint(equalTo: stackViewCell.topAnchor)
+            winAmountLabel.trailingAnchor.constraint(equalTo: cellStackView.trailingAnchor),
+            winAmountLabel.topAnchor.constraint(equalTo: cellStackView.topAnchor)
         ])
-        stackViewCell.translatesAutoresizingMaskIntoConstraints = false
+        cellStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            stackViewCell.leadingAnchor.constraint(equalTo: imageViewCell.leadingAnchor, constant: Constants.stackViewLeadingSpasing),
-            stackViewCell.trailingAnchor.constraint(equalTo: imageViewCell.trailingAnchor, constant: Constants.stackViewTrailingSpasing),
-            stackViewCell.topAnchor.constraint(equalTo: imageViewCell.topAnchor),
-            stackViewCell.bottomAnchor.constraint(equalTo: imageViewCell.bottomAnchor)
+            cellStackView.leadingAnchor.constraint(equalTo: cellImageView.leadingAnchor, constant: Constants.stackViewSideSpacing),
+            cellStackView.trailingAnchor.constraint(equalTo: cellImageView.trailingAnchor, constant: -Constants.stackViewSideSpacing),
+            cellStackView.topAnchor.constraint(equalTo: cellImageView.topAnchor),
+            cellStackView.bottomAnchor.constraint(equalTo: cellImageView.bottomAnchor)
         ])
     }
 }

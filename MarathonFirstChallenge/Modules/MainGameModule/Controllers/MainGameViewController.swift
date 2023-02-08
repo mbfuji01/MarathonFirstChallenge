@@ -15,8 +15,7 @@ class MainGameViewController: UIViewController {
         static let background = "background_image"
         static let logo = "logo_image"
         static let tableViewTopSpacing: CGFloat = -50.0
-        static let tableViewLeadingSpacing: CGFloat = 32.0
-        static let tableViewTrailingSpacing: CGFloat = -32.0
+        static let tableViewSideSpacing: CGFloat = 32.0
         static let tableViewBottomSpacing: CGFloat = -20.0
         static let tableViewRowHeight: CGFloat = 42.0
         static let logoViewTopSpacing: CGFloat = 40.0
@@ -48,15 +47,14 @@ class MainGameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         levels = data.fetchData()
-        setupTableViewDelegetes()
+        setupTableViewDelegates()
         setupViews()
         setConstraints()
         tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
-        tableView.rowHeight = Constants.tableViewRowHeight
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_back"), style: .plain, target: self, action: #selector(dismissSelf))
     }
     
-    func setupTableViewDelegetes() {
+    func setupTableViewDelegates() {
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -66,6 +64,11 @@ class MainGameViewController: UIViewController {
         backgroundImageView.addSubview(tableView)
         backgroundImageView.addSubview(logoImageView)
         tableView.backgroundColor = UIColor.clear
+        tableView.rowHeight = Constants.tableViewRowHeight
+    }
+    
+    @objc private func dismissSelf() {
+        dismiss(animated: true)
     }
     
     private func setConstraints() {
@@ -87,13 +90,9 @@ class MainGameViewController: UIViewController {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.tableViewTopSpacing),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.tableViewBottomSpacing),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.tableViewLeadingSpacing),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.tableViewTrailingSpacing)
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.tableViewSideSpacing),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.tableViewSideSpacing)
         ])
-    }
-    
-    @objc private func dismissSelf() {
-        dismiss(animated: true)
     }
 }
 
@@ -107,7 +106,7 @@ extension MainGameViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.levelCell, for: indexPath) as! MainGameTableViewCell
         let level = levels[indexPath.row]
-        cell.set(level: level)
+        cell.setViewModel(level: level)
         cell.backgroundColor = UIColor.clear
         return cell
     }
