@@ -23,7 +23,7 @@ class SplashViewController: UIViewController {
     
     private let logoView: UIImageView = {
         let logogView = UIImageView()
-        logogView.image = UIImage(named: "logo_image")
+        logogView.image = UIImage(named: "image_logo")
         return logogView
     }()
     //MARK: - Lifecycle
@@ -34,10 +34,19 @@ class SplashViewController: UIViewController {
         view.addSubview(logoView)
         setupViews()
         setConstraints()
+        setTimer()
         
-       // DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: shouldPerformSegue(withIdentifier: "WelcomeViewController", sender: nil))
+       //DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: shouldPerformSegue(withIdentifier: "WelcomeViewController", sender: nil))
         
     }
+    
+    private func setTimer() {
+            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+                let controller = WelcomeViewController()
+                self.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+
     
     private func setupViews() {
         
