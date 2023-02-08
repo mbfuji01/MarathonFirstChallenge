@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03A9045529940ACB000FDF1F /* QuestionBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A9045429940ACB000FDF1F /* QuestionBrain.swift */; };
 		03A9045729940C3B000FDF1F /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A9045629940C3B000FDF1F /* GameBrain.swift */; };
+		180B04F729941D6700481DA1 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B04F629941D6700481DA1 /* ViewState.swift */; };
 		182D35362991509300D7126A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D35352991509300D7126A /* SplashViewController.swift */; };
 		1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1850676A298FF28E0046BC7F /* AppDelegate.swift */; };
 		18506774298FF28F0046BC7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18506773298FF28F0046BC7F /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		03A9045429940ACB000FDF1F /* QuestionBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionBrain.swift; path = MarathonFirstChallenge/Modules/MainGameModule/Controllers/QuestionBrain.swift; sourceTree = SOURCE_ROOT; };
 		03A9045629940C3B000FDF1F /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameBrain.swift; path = MarathonFirstChallenge/Modules/MainGameModule/Controllers/GameBrain.swift; sourceTree = SOURCE_ROOT; };
+		180B04F629941D6700481DA1 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		182D35352991509300D7126A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		18506767298FF28E0046BC7F /* MarathonFirstChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarathonFirstChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1850676A298FF28E0046BC7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180B04F529941D5500481DA1 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				180B04F629941D6700481DA1 /* ViewState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		182D35312991506100D7126A /* SplashModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +148,7 @@
 		1850678E298FF8680046BC7F /* AnswerModule */ = {
 			isa = PBXGroup;
 			children = (
+				180B04F529941D5500481DA1 /* State */,
 				185067BC298FFA1A0046BC7F /* Controllers */,
 				185067BD298FFA1A0046BC7F /* Models */,
 				185067BE298FFA1A0046BC7F /* Views */,
@@ -344,6 +355,7 @@
 			files = (
 				185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */,
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
+				180B04F729941D6700481DA1 /* ViewState.swift in Sources */,
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
 				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,

@@ -7,38 +7,14 @@
 
 import Foundation
 
-struct EasyQuestion {
-    let question: String
-    let answers: [String]
-    let correctAnswer: String
-    
-    init(question: String, answers: [String], correctAnswer: String) {
-        self.question = question
-        self.answers = answers
-        self.correctAnswer = correctAnswer
-    }
-}
-
-struct MiddleQuestion {
-    let question: String
-    let answers: [String]
-    let correctAnswer: String
-    
-    init(question: String, answers: [String], correctAnswer: String) {
-        self.question = question
-        self.answers = answers
-        self.correctAnswer = correctAnswer
-    }
-}
-
-struct HardQuestion {
-    let question: String
-    let answers: [String]
-    let correctAnswer: String
-    
-    init(question: String, answers: [String], correctAnswer: String) {
-        self.question = question
-        self.answers = answers
-        self.correctAnswer = correctAnswer
-    }
+struct Question {
+	let question: String
+	let answers: [String]
+	let correctAnswer: String
+	
+	init(question: String, answers: [String], correctAnswer: String) {
+		self.question = question
+		self.answers = answers
+		self.correctAnswer = correctAnswer
+	}
 }
