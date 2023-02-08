@@ -13,8 +13,30 @@ class ResultViewController: UIViewController {
 		static let anyVar: String = "anyVar"
 	}
 	
+    
 	//MARK: - Create UI
 	
+    private lazy var backImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "background_image")  //Image Background
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    private lazy var logoImage:UIImageView  = {
+       let imageView = UIImageView()
+        imageView.image = UIImage(named: "logo_image") // this's logo image
+        
+        return imageView
+    }()
+    
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("backButton", for: .normal) //Button one
+        
+        return button
+    }()
 	//MARK: - Lifecycle
 	
 	override func viewDidLoad() {
@@ -24,7 +46,7 @@ class ResultViewController: UIViewController {
 	}
 	
 	private func setupViews() {
-		view.backgroundColor = .red
+//		view.backgroundColor = .red
 	}
 	
 	private func setConstraints() {
