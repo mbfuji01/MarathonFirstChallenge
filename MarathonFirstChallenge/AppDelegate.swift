@@ -12,8 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	var window: UIWindow?
 	
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //let navVC = UINavigationController(rootViewController: SplashViewController())
-        //navVC.setNavigationBarHidden(true, animated: false)
+//        let navVC = UINavigationController(rootViewController: SplashViewController())
+//        navVC.setNavigationBarHidden(true, animated: false)
 		window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = WelcomeViewController()
 		window?.makeKeyAndVisible()

@@ -44,6 +44,7 @@ class SplashViewController: UIViewController {
             Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
                 let controller = WelcomeViewController()
                 self.navigationController?.pushViewController(controller, animated: true)
+                print("Timer")
             }
         }
 
