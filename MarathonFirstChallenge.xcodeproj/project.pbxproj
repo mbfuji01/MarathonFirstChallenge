@@ -18,6 +18,9 @@
 		185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */; };
 		185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CE298FFEC50046BC7F /* UIView + Extensions.swift */; };
 		185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067D1298FFF9C0046BC7F /* UIColor+App.swift */; };
+		EEA3751B2995592000144A41 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA3751A2995592000144A41 /* RulesViewController.swift */; };
+		EEA3751F299569EC00144A41 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA3751E299569EC00144A41 /* TeamViewController.swift */; };
+		EEA375212995A60A00144A41 /* TeamLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA375202995A60A00144A41 /* TeamLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		185067CE298FFEC50046BC7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		185067D1298FFF9C0046BC7F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
+		EEA3751A2995592000144A41 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
+		EEA3751E299569EC00144A41 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
+		EEA375202995A60A00144A41 /* TeamLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +171,8 @@
 			isa = PBXGroup;
 			children = (
 				185067BF298FFA3B0046BC7F /* WelcomeViewController.swift */,
+				EEA3751A2995592000144A41 /* RulesViewController.swift */,
+				EEA3751E299569EC00144A41 /* TeamViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 			children = (
 				185067CE298FFEC50046BC7F /* UIView + Extensions.swift */,
 				185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */,
+				EEA375202995A60A00144A41 /* TeamLabel.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -336,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEA3751B2995592000144A41 /* RulesViewController.swift in Sources */,
 				185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */,
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
@@ -344,6 +354,8 @@
 				185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */,
 				185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */,
 				185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */,
+				EEA375212995A60A00144A41 /* TeamLabel.swift in Sources */,
+				EEA3751F299569EC00144A41 /* TeamViewController.swift in Sources */,
 				182D35362991509300D7126A /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

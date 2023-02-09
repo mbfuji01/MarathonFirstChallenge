@@ -12,10 +12,18 @@ extension UIColor {
 	static var whiteTitleColor: UIColor {
 		UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 	}
-	
+    
+    static var rulesBackgroundColor: UIColor {
+        UIColor(red: 49, green: 52, blue: 69, alpha: 1)
+    }
+
 	static var descriptionTitleColor: UIColor {
 		UIColor(red: 1, green: 1, blue: 1, alpha: 0.5)
 	}
+    
+    static var welcomeBackgroundColor: UIColor {
+        UIColor(red: 0.191, green: 0.205, blue: 0.271, alpha: 1)
+    }
 	
 	static var timerBackgroundWhiteColor: UIColor {
 		UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
@@ -24,7 +32,9 @@ extension UIColor {
 	static var timerItemWhiteColor: UIColor {
 		UIColor(red: 1, green: 1, blue: 1, alpha: 1)
 	}
-	
+    
+    
+    
 	static var timerBackgroundYellowColor: UIColor {
 		UIColor(red: 1, green: 0.66, blue: 0, alpha: 0.3)
 	}
