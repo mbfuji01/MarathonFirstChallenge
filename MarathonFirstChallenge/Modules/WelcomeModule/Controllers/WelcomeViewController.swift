@@ -5,19 +5,6 @@
 //  Created by demasek on 05.02.2023.
 //
 
-// Вариант его реализации в коде
-// 1. Создаем переменную и даем ей имя
-//    private lazy var anyStackView = UIStackView()
-// 2. Реализовывам в функции setupViews()
-//    anyStackView = UIStackView(arrangedSubviews: [anyLabel,            - добавляем в stackView эллементы
-//                                                     anyImage,    - добавляем в stackView эллементы
-//                                                     anyButton],    - добавляем в stackView эллементы
-//                                axis: .vertical,                    - указываем какое будет расположение у эллементов
-//                                spacing: 5)                        - указываем расстояние между этими эллементами
-
-
-
-
 import Foundation
 import UIKit
 
@@ -30,15 +17,6 @@ class WelcomeViewController: UIViewController {
         static let newGameImage: String = "new_game_button"
         static let teamButton: String = "team_button"
     }
-    
-//    private var anyStackView: UIStackView{
-//        let anyStackView = UIStackView()
-//        anyStackView.addArrangedSubview(logoImageView)
-//        anyStackView.addArrangedSubview(newGameButton)
-//        anyStackView.axis = .vertical
-//        anyStackView.spacing = 16
-//        return anyStackView
-//    }
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -72,7 +50,9 @@ class WelcomeViewController: UIViewController {
     
     private lazy var teamButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setBackgroundImage(UIImage(named: Constants.teamButton), for: .normal)
+		button.setTitle("© TEAM 10", for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+		button.tintColor = .whiteTitleColor
         button.addTarget(self, action: #selector(teamButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -102,7 +82,6 @@ class WelcomeViewController: UIViewController {
         view.addSubview(gameNameLabel)
         view.addSubview(teamButton)
         view.addSubview(newGameButton)
-//        view.addSubview(anyStackView)
     }
 
     @objc private func rulesButtonTapped() {
@@ -154,8 +133,6 @@ class WelcomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             teamButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 691),
             teamButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            rulesButton.widthAnchor.constraint(equalToConstant: 70),
-            rulesButton.heightAnchor.constraint(equalToConstant: 17)
         ])
         
         newGameButton.translatesAutoresizingMaskIntoConstraints = false
