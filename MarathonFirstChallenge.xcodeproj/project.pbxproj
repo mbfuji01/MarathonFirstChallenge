@@ -18,6 +18,7 @@
 		185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */; };
 		185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CE298FFEC50046BC7F /* UIView + Extensions.swift */; };
 		185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067D1298FFF9C0046BC7F /* UIColor+App.swift */; };
+		18FAA541299539FF0043DAD5 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA540299539FF0043DAD5 /* AnswerButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		185067CE298FFEC50046BC7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		185067D1298FFF9C0046BC7F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
+		18FAA540299539FF0043DAD5 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 			children = (
 				185067CE298FFEC50046BC7F /* UIView + Extensions.swift */,
 				185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */,
+				18FAA540299539FF0043DAD5 /* AnswerButton.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
 				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,
+				18FAA541299539FF0043DAD5 /* AnswerButton.swift in Sources */,
 				185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */,
 				185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */,
 				185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */,
