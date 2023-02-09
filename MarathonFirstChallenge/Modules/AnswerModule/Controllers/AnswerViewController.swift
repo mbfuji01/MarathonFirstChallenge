@@ -1,9 +1,10 @@
 //  AnswerViewController.swift
 //  MarathonFirstChallenge
 
-
+import AVFoundation
 import Foundation
 import UIKit
+
 
 class AnswerViewController: UIViewController {
 	enum Constants {
@@ -11,6 +12,7 @@ class AnswerViewController: UIViewController {
 	}
 	
 	private lazy var answerButtonStackView = UIStackView()
+    private lazy var helpButtonStackView = UIStackView ()
 	
 	//MARK: - Create UI
 	
@@ -41,7 +43,6 @@ class AnswerViewController: UIViewController {
 	}()
 	private lazy var seconds: UILabel = {
 		var time = UILabel ()
-		time.text = "24"
 		time.textColor = .white
 		time.font = UIFont(name: "HelveticaNeue-Bold", size: 24)
 		return time
@@ -95,14 +96,17 @@ class AnswerViewController: UIViewController {
 		call.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
 		return call
 	}()
-	
-	
+    
+    
+    
 	//MARK: - Lifecycle
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        startTime()
 		setupViews()
 		setConstraints()
+        playSound()
 	}
 	private func setupViews() {
 		answerButtonStackView = UIStackView(arrangedSubviews: [
@@ -111,7 +115,12 @@ class AnswerViewController: UIViewController {
 			threeAnswerButton,
 			fourAnswerButton
 		], axis: .vertical, spacing: 15)
-		
+    
+        helpButtonStackView = UIStackView(arrangedSubviews: [
+            helpButton,
+            audienceButton,
+            callButton
+        ], axis: .horizontal, spacing: 20)
 		view.addSubview(backgroundImageView)
 		view.addSubview(questionNumberLabel)
 		view.addSubview(currentMoneyLabel)
@@ -119,7 +128,46 @@ class AnswerViewController: UIViewController {
 		timerImage.addSubview(seconds)
 		view.addSubview(questionText)
 		view.addSubview(answerButtonStackView)
+        view.addSubview(helpButtonStackView)
+        
 	}
+    //MARK: - MUSIC
+    var player: AVAudioPlayer!
+    func playSound() {
+        let url = Bundle.main.url(forResource: "waiting", withExtension: "wav")
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+        
+    }
+    
+    //MARK: - TIMER
+    var timeLabel = 31
+    var timer = Timer()
+    
+    @objc func startTime() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(AnswerViewController.updateTimer)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateTimer() {
+        
+     // replace with a ternary operator
+        if(timeLabel > 0){
+            timeLabel -= 1
+        }else{
+            timeLabel = 0
+        }
+        seconds.text = "\(timeLabel)"
+        // logic. or via another fuc
+        switch timeLabel {
+        case 15:
+            timerImage.image = UIImage(named: "timer_image_alert")
+            seconds.textColor = .systemOrange
+        case 5:
+            timerImage.image = UIImage(named: "timer_image_warning")
+            seconds.textColor = .systemRed
+        default:break
+        }
+    }
 	
 	//MARK: - Button Function
 	
@@ -128,7 +176,7 @@ class AnswerViewController: UIViewController {
 	}
 	
 	@objc private func helpButtonTapped() {
-		
+        
 	}
 	
 	@objc private func audienceButtonTapped() {
@@ -182,8 +230,15 @@ class AnswerViewController: UIViewController {
 		NSLayoutConstraint.activate([
 			answerButtonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
 			answerButtonStackView.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -30),
-			answerButtonStackView.widthAnchor.constraint(equalToConstant: view.frame.width-60)
+            answerButtonStackView.widthAnchor.constraint(equalToConstant: view.frame.width-60),
+            answerButtonStackView.bottomAnchor.constraint(equalTo: helpButtonStackView.topAnchor, constant: -40)
 		])
+        helpButtonStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            helpButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            helpButtonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            helpButtonStackView.heightAnchor.constraint(equalToConstant: 64)
+        ])
 	}
 }
 
