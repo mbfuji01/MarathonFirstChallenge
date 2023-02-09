@@ -9,66 +9,61 @@ import Foundation
 import UIKit
 
 class SplashViewController: UIViewController {
-    enum Constants {
-        static let anyVar: String = "anyVar"
-    }
-    
-    //MARK: - Create UI
-    
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "background_image")
-        return imageView
-        }()
-    
-    private let logoView: UIImageView = {
-        let logogView = UIImageView()
-        logogView.image = UIImage(named: "image_logo")
-        return logogView
-    }()
-    //MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(imageView)
-        view.addSubview(logoView)
-        setupViews()
-        setConstraints()
-        setTimer()
-        
-       //DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: shouldPerformSegue(withIdentifier: "WelcomeViewController", sender: nil))
-        
-    }
-    
-    private func setTimer() {
-            Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
-                let controller = WelcomeViewController()
-                self.navigationController?.pushViewController(controller, animated: true)
-                print("Timer")
-            }
-        }
-
-    
-    private func setupViews() {
-        
-    }
-    
-    private func setConstraints() {
-        
-        logoView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: view.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            logoView.heightAnchor.constraint(equalToConstant: 267),
-            logoView.widthAnchor.constraint(equalToConstant: 267),
-            logoView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-        ])
-    }
+	enum Constants {
+		static let backgroundImage: String = "background_image"
+		static let logoImage: String = "image_logo"
+		static let logoImageViewSize: CGFloat = 267.0
+	}
+	
+	//MARK: - Create UI
+	
+	private lazy var backgroundImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: Constants.backgroundImage)
+		return imageView
+	}()
+	
+	private lazy var logoImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: Constants.logoImage)
+		return imageView
+	}()
+	
+	//MARK: - Lifecycle
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setupViews()
+		setConstraints()
+		setTimer()
+	}
+	
+	private func setupViews() {
+		view.addSubview(backgroundImageView)
+		view.addSubview(logoImageView)
+	}
+	
+	private func setTimer() {
+		Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { timer in
+			let controller = WelcomeViewController()
+			self.navigationController?.pushViewController(controller, animated: true)
+		}
+	}
+	
+	private func setConstraints() {
+		logoImageView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+			backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		])
+		backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			logoImageView.heightAnchor.constraint(equalToConstant: Constants.logoImageViewSize),
+			logoImageView.widthAnchor.constraint(equalToConstant: Constants.logoImageViewSize),
+			logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+		])
+	}
 }
