@@ -19,7 +19,6 @@ class AnswerViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
     private lazy var questionNumber: UILabel = {
         let questionNum = UILabel ()
         questionNum.text = "QUESTION #1"
@@ -27,7 +26,6 @@ class AnswerViewController: UIViewController {
         questionNum.alpha = 0.5
         return questionNum
     }()
-    
     private lazy var allMoney: UILabel = {
         let money = UILabel ()
         money.text = "$500"
@@ -35,13 +33,11 @@ class AnswerViewController: UIViewController {
         money.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         return money
     }()
-    
     private lazy var timerImage: UIImageView = {
         var secondsTimer = UIImageView()
         secondsTimer.image = UIImage(named: "timer_image_regular")
         return secondsTimer
     }()
-    
     private lazy var seconds: UILabel = {
         var time = UILabel ()
         time.text = "24"
@@ -49,7 +45,6 @@ class AnswerViewController: UIViewController {
         time.font = UIFont(name: "HelveticaNeue-Bold", size: 24)
         return time
     }()
-    
     private lazy var questionText: UILabel = {
         var text = UILabel ()
         text.text = "How many continents are there on planet Earth?"
@@ -59,17 +54,21 @@ class AnswerViewController: UIViewController {
         text.textAlignment = .center
         return text
     }()
-    
     private lazy var answerButton1: UIButton = {
         let button1 = UIButton(type: .system)
         button1.setBackgroundImage(UIImage(named: "answer_button_blue"), for: .normal)
+        
+//        var attributedString =
+//        let myAttribute = [ NSAttributedString.Key.foregroundColor: UIColor.yellow ]
+//        let myAttrString = NSAttributedString(string: attributedString, attributes: myAttribute)
+//        text.attributedText = myAttrString
+        
         button1.setTitle("A: Answer1", for: .normal)
         button1.tintColor = .white
         button1.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         button1.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button1
     }()
-    
     private lazy var answerButton2: UIButton = {
         let button2 = UIButton(type: .system)
         button2.setBackgroundImage(UIImage(named: "answer_button_blue"), for: .normal)
@@ -97,7 +96,29 @@ class AnswerViewController: UIViewController {
         button4.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button4
     }()
-    private lazy var answerButtonStackView = UIStackView()
+    private lazy var answerButtonStackView = UIStackView ()
+
+    
+
+    private lazy var helpButton: UIButton = {
+        let choice = UIButton (type: .system)
+        choice.setBackgroundImage(UIImage(named: "help_50_50"), for: .normal)
+        choice.addTarget(self, action: #selector(choiceButtonTapped), for: .touchUpInside)
+        return choice
+    }()
+    
+    private lazy var audienceButton: UIButton = {
+        let audience = UIButton (type: .system)
+        audience.setBackgroundImage(UIImage(named: "help_audience"), for: .normal)
+        audience.addTarget(self, action: #selector(audienceButtonTapped), for: .touchUpInside)
+        return audience
+    }()
+    private lazy var callButton: UIButton = {
+        let call = UIButton (type: .system)
+        call.setBackgroundImage(UIImage(named: "help_call"), for: .normal)
+        call.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
+        return call
+    }()
     
     
     //MARK: - Lifecycle
@@ -109,18 +130,15 @@ class AnswerViewController: UIViewController {
     }
     private func setupViews() {
         view.addSubview(backgroundImageView)
-        backgroundImageView.addSubview(questionNumber)
-        backgroundImageView.addSubview(allMoney)
-        backgroundImageView.addSubview(timerImage)
+        view.addSubview(questionNumber)
+        view.addSubview(allMoney)
+        view.addSubview(timerImage)
         timerImage.addSubview(seconds)
-        backgroundImageView.addSubview(questionText)
-        backgroundImageView.addSubview(answerButton1)
-        backgroundImageView.addSubview(answerButton2)
-        backgroundImageView.addSubview(answerButton3)
-        backgroundImageView.addSubview(answerButton4)
+        view.addSubview(questionText)
+        view.addSubview(answerButtonStackView)
         
         
-        answerButtonStackView = UIStackView(arrangedSubviews: [answerButton1, answerButton2, answerButton3, answerButton4], axis: .vertical, spacing: 5)
+        answerButtonStackView = UIStackView(arrangedSubviews: [answerButton1, answerButton2, answerButton3, answerButton4], axis: .vertical, spacing: 15)
         
         
     }
@@ -128,6 +146,17 @@ class AnswerViewController: UIViewController {
         
     }
     
+    @objc private func choiceButtonTapped (){
+        
+    }
+    
+    @objc private func audienceButtonTapped (){
+        
+    }
+    
+    @objc private func callButtonTapped (){
+        
+    }
     
     private func setConstraints() {
         backgroundImageView.frame = view.frame
@@ -176,15 +205,14 @@ class AnswerViewController: UIViewController {
         //
         //        ])
         
-        //        answerButtonStackView.translatesAutoresizingMaskIntoConstraints = false
-        //        NSLayoutConstraint.activate([
-        //            answerButtonStackView.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor),
-        //            answerButtonStackView.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 30),
-        //            answerButtonStackView.trailingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -30)
-        //            ])
-        //	}
-        //
+                answerButtonStackView.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([
+                    answerButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                    answerButtonStackView.leadingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: 30),
+                    answerButtonStackView.trailingAnchor.constraint(equalTo: backgroundImageView.leadingAnchor, constant: -30)
+                    ])
+        	}
+        
         
     }
-}
 
