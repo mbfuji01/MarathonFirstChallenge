@@ -1,0 +1,14 @@
+<svg width="92" height="45" viewBox="0 0 92 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="92" height="45" rx="22.5" fill="#832203" fill-opacity="0.5"/>
+<g clip-path="url(#clip0_3_400)">
+<path d="M25 12C25 11.1716 25.6716 10.5 26.5 10.5H29.5C30.3284 10.5 31 11.1716 31 12C31 12.8284 30.3284 13.5 29.5 13.5H26.5C25.6716 13.5 25 12.8284 25 12Z" fill="#FF6231"/>
+<path d="M33.0607 19.0018C32.4749 18.416 32.4749 17.4663 33.0607 16.8805L34.7931 15.1481C35.3789 14.5623 36.3286 14.5623 36.9144 15.1481C37.5002 15.7339 37.5002 16.6836 36.9144 17.2694L35.182 19.0018C34.5962 19.5876 33.6464 19.5876 33.0607 19.0018Z" fill="#FF6231"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M28 32.5C32.9706 32.5 37 28.4706 37 23.5C37 18.5294 32.9706 14.5 28 14.5C23.0294 14.5 19 18.5294 19 23.5C19 28.4706 23.0294 32.5 28 32.5ZM29 19.5C29 18.9477 28.5523 18.5 28 18.5C27.4477 18.5 27 18.9477 27 19.5V23.5C27 24.0523 27.4477 24.5 28 24.5L32 24.5C32.5523 24.5 33 24.0523 33 23.5C33 22.9477 32.5523 22.5 32 22.5L29 22.5V19.5Z" fill="#FF6231"/>
+</g>
+<text fill="#FF6231" xml:space="preserve" style="white-space: pre" font-family="SF Compact Display" font-size="24" letter-spacing="0em"><tspan x="48.2188" y="31.0312">03</tspan></text>
+<defs>
+<clipPath id="clip0_3_400">
+<rect width="24" height="24" fill="white" transform="translate(16 10.5)"/>
+</clipPath>
+</defs>
+</svg>
