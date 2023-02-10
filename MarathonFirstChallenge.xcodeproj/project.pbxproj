@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03A9045529940ACB000FDF1F /* QuestionBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A9045429940ACB000FDF1F /* QuestionBrain.swift */; };
+		03A9045729940C3B000FDF1F /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A9045629940C3B000FDF1F /* GameBrain.swift */; };
+		180B04F729941D6700481DA1 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180B04F629941D6700481DA1 /* ViewState.swift */; };
 		030D2D78299169E700254BD7 /* LevelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D2D77299169E700254BD7 /* LevelsModel.swift */; };
 		030D2D7A29916D5C00254BD7 /* MainGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */; };
 		182D35362991509300D7126A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D35352991509300D7126A /* SplashViewController.swift */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03A9045429940ACB000FDF1F /* QuestionBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = QuestionBrain.swift; path = MarathonFirstChallenge/Modules/MainGameModule/Controllers/QuestionBrain.swift; sourceTree = SOURCE_ROOT; };
+		03A9045629940C3B000FDF1F /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GameBrain.swift; path = MarathonFirstChallenge/Modules/MainGameModule/Controllers/GameBrain.swift; sourceTree = SOURCE_ROOT; };
+		180B04F629941D6700481DA1 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		030D2D77299169E700254BD7 /* LevelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsModel.swift; sourceTree = "<group>"; };
 		030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameTableViewCell.swift; sourceTree = "<group>"; };
 		182D35352991509300D7126A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180B04F529941D5500481DA1 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				180B04F629941D6700481DA1 /* ViewState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		182D35312991506100D7126A /* SplashModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +156,7 @@
 		1850678E298FF8680046BC7F /* AnswerModule */ = {
 			isa = PBXGroup;
 			children = (
+				180B04F529941D5500481DA1 /* State */,
 				AF8EEB2E2995923C005903A4 /* Sounds */,
 				185067BC298FFA1A0046BC7F /* Controllers */,
 				185067BD298FFA1A0046BC7F /* Models */,
@@ -249,6 +264,8 @@
 		185067BD298FFA1A0046BC7F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				03A9045429940ACB000FDF1F /* QuestionBrain.swift */,
+				03A9045629940C3B000FDF1F /* GameBrain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -360,12 +377,15 @@
 				185067C8298FFB420046BC7F /* AnswerViewController.swift in Sources */,
 				030D2D7A29916D5C00254BD7 /* MainGameTableViewCell.swift in Sources */,
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
+				180B04F729941D6700481DA1 /* ViewState.swift in Sources */,
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
 				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,
+				03A9045529940ACB000FDF1F /* QuestionBrain.swift in Sources */,
 				18FAA541299539FF0043DAD5 /* AnswerButton.swift in Sources */,
 				185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */,
 				185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */,
+				03A9045729940C3B000FDF1F /* GameBrain.swift in Sources */,
 				185067C0298FFA3B0046BC7F /* WelcomeViewController.swift in Sources */,
 				030D2D78299169E700254BD7 /* LevelsModel.swift in Sources */,
 				182D35362991509300D7126A /* SplashViewController.swift in Sources */,
