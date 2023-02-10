@@ -9,14 +9,14 @@ import UIKit
 
 class TeamViewController: UIViewController {
     enum Constants {
-        static let teamMemberOneText: String = "WelcomeModule: Alina"
-        static let teamMemberTwoText: String = "AnswerModule: Anastasia"
-        static let teamMemberThreeText: String = "MainGameModule: Alexandra"
-        static let teamMemberFourText: String = "SplashModule: Symbat"
-        static let teamMemberFiveText: String = "ResultModule: Volodymyr"
-        static let teamMemberSixText: String = "Team Leader: Dmitry"
         static let closeButtonName: String = "Close"
         static let teamLabelName: String = "Team"
+        static let teamMemberOneText: String = "WelcomeModule: Alina Artamonova"
+        static let teamMemberTwoText: String = "AnswerModule: Anastasia Smolya"
+        static let teamMemberThreeText: String = "MainGameModule: Alexandra Osichka"
+        static let teamMemberFourText: String = "SplashModule: Symbat Maidanova"
+        static let teamMemberFiveText: String = "ResultModule: Vladimir Smolyar"
+        static let teamMemberSixText: String = "Team Leader: Dmitry Chulyukov"
     }
     
     private lazy var teamMemberOneLabel = UILabel.teamMemberLabel
@@ -51,23 +51,23 @@ class TeamViewController: UIViewController {
     }
     
     private func setupViews() {
-		teamMemberOneLabel.text = Constants.teamMemberOneText
-		teamMemberTwoLabel.text = Constants.teamMemberTwoText
-		teamMemberThreeLabel.text = Constants.teamMemberThreeText
-		teamMemberFourLabel.text = Constants.teamMemberFourText
-		teamMemberFiveLabel.text = Constants.teamMemberFiveText
-		teamMemberSixLabel.text = Constants.teamMemberSixText
-		memberStackView = UIStackView(arrangedSubviews: [
-			teamMemberOneLabel,
-			teamMemberTwoLabel,
-			teamMemberThreeLabel,
-			teamMemberFourLabel,
-			teamMemberFiveLabel,
-			teamMemberSixLabel
-		], axis: .vertical, spacing: 15)
         view.backgroundColor = .welcomeBackgroundColor
         view.addSubview(closeButton)
         view.addSubview(teamLabel)
+        teamMemberOneLabel.text = Constants.teamMemberOneText
+        teamMemberTwoLabel.text = Constants.teamMemberTwoText
+        teamMemberThreeLabel.text = Constants.teamMemberThreeText
+        teamMemberFourLabel.text = Constants.teamMemberFourText
+        teamMemberFiveLabel.text = Constants.teamMemberFiveText
+        teamMemberSixLabel.text = Constants.teamMemberSixText
+        memberStackView = UIStackView(arrangedSubviews: [
+            teamMemberOneLabel,
+            teamMemberTwoLabel,
+            teamMemberThreeLabel,
+            teamMemberFourLabel,
+            teamMemberFiveLabel,
+            teamMemberSixLabel
+        ], axis: .vertical, spacing: 15)
         view.addSubview(memberStackView)
     }
     
@@ -77,8 +77,6 @@ class TeamViewController: UIViewController {
     }
     
     private func setConstraints() {
-
-        
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 17),
@@ -93,8 +91,8 @@ class TeamViewController: UIViewController {
         
         memberStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            memberStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            memberStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            memberStackView.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 50),
+            memberStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32)
         ])
 
     }
