@@ -9,6 +9,9 @@ import UIKit
 class AnswerViewController: UIViewController {
 	enum Constants {
 		static let backgroundImage: String = "background_image"
+		static let defaultButtonBackgroundImage: String = "answer_button_blue"
+		static let correctButtonBackgroundImage: String = "answer_button_green"
+		static let inCorrectButtonBackgroundImage: String = "answer_button_red"
 		static let timerImage: String = "timer_image_regular"
 		static let questionNumberText: String = "QUESTION #1"
 		static let currentMoneyText: String = "$500"
@@ -35,7 +38,7 @@ class AnswerViewController: UIViewController {
 		static let answerButtonStackViewBottomSpacing: CGFloat = 40.0
 		static let helpButtonStackViewHeight: CGFloat = 64.0
 	}
-
+	
 	//MARK: - Create UI
 	
 	private lazy var backgroundImageView: UIImageView = {
@@ -120,6 +123,8 @@ class AnswerViewController: UIViewController {
 	
 	private lazy var answerButtonStackView = UIStackView()
 	private lazy var helpButtonStackView = UIStackView()
+	private lazy var correctAnswer = ""
+	let gameBrain = GameBrain()
 	
 	//MARK: - Lifecycle
 	
@@ -129,6 +134,7 @@ class AnswerViewController: UIViewController {
 		setConstraints()
 		startTime()
 		playSound()
+		setViewModel()
 	}
 	
 	private func setupViews() {
@@ -152,6 +158,17 @@ class AnswerViewController: UIViewController {
 		view.addSubview(currentQuestionLabel)
 		view.addSubview(answerButtonStackView)
 		view.addSubview(helpButtonStackView)
+	}
+	
+	private func setViewModel() {
+		let data = gameBrain.getQuestionData()
+		currentQuestionLabel.text = data[0]
+		oneAnswerButton.text = data[1]
+		twoAnswerButton.text = data[2]
+		threeAnswerButton.text = data[3]
+		fourAnswerButton.text = data[4]
+		correctAnswer = data[5]
+		questionNumberLabel.text = data[6]
 	}
 	
 	//MARK: - Music
@@ -192,12 +209,34 @@ class AnswerViewController: UIViewController {
 		}
 	}
 	
+	//MARK: - GameBrain func
+	
+	
+	
+//	private func goToKuda() {
+//		if userAnswer == true {
+//			goToMainScreen
+//		} else if userAnswer == false && badOshibka == true {
+//			goToMainScreen
+//		} else {
+//			goToResult()
+//		}
+//	}
+	
+	
 	//MARK: - Button Function
 	
 	@objc private func answerButtonTapped(_ sender: UIButton) {
-		print(sender.currentTitle!)
+		// timer 5 sec func with neponatnaya music
+		if sender.currentTitle == correctAnswer {
+			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
+			//play good music
+		} else {
+			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
+			//play bad music
+		}
 	}
-	
+
 	@objc private func helpButtonTapped() {
 		print("helpButtonTapped")
 	}

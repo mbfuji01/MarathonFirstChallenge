@@ -70,26 +70,20 @@ struct GameBrain {
 			newGameQuestion[questionLevel].answers[2],
 			newGameQuestion[questionLevel].answers[3],
 			newGameQuestion[questionLevel].correctAnswer,
+			"\(questionLevel + 1)"
 		]
 	}
 	
-	mutating func checkUserAnswer(userAnswer: String) -> ViewState {
+	mutating func checkUserAnswer(userAnswer: String) {
 		if userAnswer == newGameQuestion[questionLevel].correctAnswer {
 			questionLevel += 1
-			return ViewState.right
 		} else if userCanMakeMistake {
 			questionLevel += 1
 			userCanMakeMistake = false
-			return ViewState.right
-		} else {
-			return ViewState.wrong
 		}
 	}
 	
-	func setRi
-	
 	mutating func userAnswerCorrect() {
 		questionLevel += 1
-		
 	}
 }
