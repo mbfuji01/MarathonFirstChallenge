@@ -13,9 +13,6 @@ class AnswerViewController: UIViewController {
 		static let questionNumberText: String = "QUESTION #1"
 		static let currentMoneyText: String = "$500"
 		static let currentQuestionText: String = "How many continents are there on planet Earth?"
-		static let currentMoneyFontSize: CGFloat = 20
-		static let secondsFontSize: CGFloat = 24
-		static let currentQuestionFontSize: CGFloat = 24
 		static let waitingSoundName: String = "waiting"
 		static let soundExtension: String = "wav"
 		static let helpButtonImage: String = "help_50_50"
@@ -23,17 +20,20 @@ class AnswerViewController: UIViewController {
 		static let callButtonImage: String = "help_call"
 		static let timerAlertImage: String = "timer_image_alert"
 		static let timerWarningImage: String = "timer_image_warning"
-        static let questionNumberLabelTopSpacing: CGFloat = 15
-        static let currentMoneyLabelTopSpacing: CGFloat = 3
-        static let timerImageViewTopSpacing: CGFloat = 32
-        static let timerImageViewWidth: CGFloat = 93
-        static let timerImageViewHeight: CGFloat = 47
-        static let secondsLabelXCenter: CGFloat = 17
-        static let currentQuestionLabelTopSpacing: CGFloat = 24
-        static let currentQuestionLabelSideSpacing: CGFloat = 30
-        static let answerButtonStackViewSideSpacing: CGFloat = 30
-        static let answerButtonStackViewBottomSpacing: CGFloat = 40
-        static let helpButtonStackViewHeight: CGFloat = 64
+		static let currentMoneyFontSize: CGFloat = 20.0
+		static let secondsFontSize: CGFloat = 24.0
+		static let currentQuestionFontSize: CGFloat = 24.0
+		static let questionNumberLabelTopSpacing: CGFloat = 15.0
+		static let currentMoneyLabelTopSpacing: CGFloat = 3.0
+		static let timerImageViewTopSpacing: CGFloat = 32.0
+		static let timerImageViewWidth: CGFloat = 93.0
+		static let timerImageViewHeight: CGFloat = 47.0
+		static let secondsLabelXCenter: CGFloat = 17.0
+		static let currentQuestionLabelTopSpacing: CGFloat = 24.0
+		static let currentQuestionLabelSideSpacing: CGFloat = 30.0
+		static let answerButtonStackViewSideSpacing: CGFloat = 30.0
+		static let answerButtonStackViewBottomSpacing: CGFloat = 40.0
+		static let helpButtonStackViewHeight: CGFloat = 64.0
 	}
 
 	//MARK: - Create UI
