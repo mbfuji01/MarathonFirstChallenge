@@ -27,20 +27,20 @@ class LevelsViewModel {
 	}
 	
 	private var levelModels = [
-		LevelsModel(numberOfQuestion: 1, winAmount: 500, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 15, winAmount: 1_000_000, image: Constants.yellowButton),
+        LevelsModel(numberOfQuestion: 14, winAmount: 500_000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 13, winAmount: 250_000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 12, winAmount: 100_000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 11, winAmount: 50_000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 10, winAmount: 25_000, image: Constants.blueButton),
+        LevelsModel(numberOfQuestion: 9, winAmount: 15000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 8, winAmount: 12500, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 7, winAmount: 1000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 6, winAmount: 7500, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 5, winAmount: 5000, image: Constants.blueButton),
+        LevelsModel(numberOfQuestion: 4, winAmount: 3000, image: Constants.darkButton),
+        LevelsModel(numberOfQuestion: 3, winAmount: 2000, image: Constants.darkButton),
 		LevelsModel(numberOfQuestion: 2, winAmount: 1000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 3, winAmount: 2000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 4, winAmount: 3000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 5, winAmount: 5000, image: Constants.blueButton),
-		LevelsModel(numberOfQuestion: 6, winAmount: 7500, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 7, winAmount: 1000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 8, winAmount: 12500, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 9, winAmount: 15000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 10, winAmount: 25_000, image: Constants.blueButton),
-		LevelsModel(numberOfQuestion: 11, winAmount: 50_000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 12, winAmount: 100_000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 13, winAmount: 250_000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 14, winAmount: 500_000, image: Constants.darkButton),
-		LevelsModel(numberOfQuestion: 15, winAmount: 1_000_000, image: Constants.yellowButton)
+        LevelsModel(numberOfQuestion: 1, winAmount: 500, image: Constants.darkButton)
 	]
 }
