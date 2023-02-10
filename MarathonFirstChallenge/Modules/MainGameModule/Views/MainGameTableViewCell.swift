@@ -34,7 +34,7 @@ class MainGameTableViewCell: UITableViewCell {
         return label
     }()
     
-    //MARK: - Setting Cell
+	//MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,18 +45,20 @@ class MainGameTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+	
+	private func setupViews() {
+		addSubview(cellImageView)
+		cellImageView.addSubview(cellStackView)
+		cellStackView.addArrangedSubview(questionLabel)
+		cellStackView.addArrangedSubview(winAmountLabel)
+	}
+	
+	//MARK: - Setup Cell
     
     func setViewModel(level: LevelsModel) {
         cellImageView.image = UIImage(named: level.image)
         questionLabel.text = "\(level.numberOfQuestion):"
         winAmountLabel.text = "$\(level.winAmount)"
-    }
-    
-    private func setupViews() {
-        addSubview(cellImageView)
-        cellImageView.addSubview(cellStackView)
-        cellStackView.addArrangedSubview(questionLabel)
-        cellStackView.addArrangedSubview(winAmountLabel)
     }
     
     private func setConstraints() {

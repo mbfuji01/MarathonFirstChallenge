@@ -22,10 +22,6 @@ class LevelsViewModel {
 		static let redButton = "answer_button_red"
 	}
 	
-	func getLevelModels() -> [LevelsModel] {
-		return levelModels
-	}
-	
 	private var levelModels = [
         LevelsModel(numberOfQuestion: 15, winAmount: 1_000_000, image: Constants.yellowButton),
         LevelsModel(numberOfQuestion: 14, winAmount: 500_000, image: Constants.darkButton),
@@ -43,4 +39,8 @@ class LevelsViewModel {
 		LevelsModel(numberOfQuestion: 2, winAmount: 1000, image: Constants.darkButton),
         LevelsModel(numberOfQuestion: 1, winAmount: 500, image: Constants.darkButton)
 	]
+	
+	func getLevelModels() -> [LevelsModel] {
+		return levelModels
+	}
 }

@@ -10,10 +10,14 @@ import UIKit
 
 class MainGameViewController: UIViewController {
     enum Constants {
-        static let anyVar: String = "anyVar"
         static let levelCell = "cell"
-        static let background = "background_image"
-        static let logo = "logo_image"
+        static let backgroundImage = "background_image"
+        static let logoImage = "logo_image"
+		static let blueButton = "levels_blue_button"
+		static let darkButton = "levels_dark_blue_button"
+		static let greenButton = "levels_green_button"
+		static let yellowButton = "levels_yellow_button"
+		static let redButton = "answer_button_red"
         static let tableViewTopSpacing: CGFloat = -50.0
         static let tableViewSideSpacing: CGFloat = 32.0
         static let tableViewBottomSpacing: CGFloat = -20.0
@@ -21,24 +25,19 @@ class MainGameViewController: UIViewController {
         static let logoViewTopSpacing: CGFloat = 40.0
         static let logoViewHeight: CGFloat = 150.0
         static let logoViewWidth: CGFloat = 150.0
-		static let blueButton = "levels_blue_button"
-		static let darkButton = "levels_dark_blue_button"
-		static let greenButton = "levels_green_button"
-		static let yellowButton = "levels_yellow_button"
-		static let redButton = "answer_button_red"
     }
     
     //MARK: - Create UI
     
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.background)
+        imageView.image = UIImage(named: Constants.backgroundImage)
         return imageView
     }()
     
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.logo)
+        imageView.image = UIImage(named: Constants.logoImage)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -53,16 +52,11 @@ class MainGameViewController: UIViewController {
         setupTableViewDelegates()
         setupViews()
         setConstraints()
+		createViewModel()
         tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
-        createViewModel()
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_back"), style: .plain, target: self, action: #selector(dismissSelf))
     }
-    
-    func setupTableViewDelegates() {
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
-    
+
     private func setupViews() {
         view.addSubview(backgroundImageView)
         backgroundImageView.addSubview(tableView)
@@ -70,22 +64,22 @@ class MainGameViewController: UIViewController {
         tableView.backgroundColor = UIColor.clear
         tableView.rowHeight = Constants.tableViewRowHeight
     }
-    
-    @objc private func dismissSelf() {
-        dismiss(animated: true)
-    }
 	
-    
+	func setupTableViewDelegates() {
+		tableView.dataSource = self
+		tableView.delegate = self
+	}
+	
     private func createViewModel() {
         let levelModels = LevelsViewModel().getLevelModels()
         actualViewModel = levelModels
     }
     
-	private func updateViewModel(for index: Int, state: Bool) {
+	private func updateViewModel(for index: Int, correctAnswer: Bool) {
         var levelModels = LevelsViewModel().getLevelModels()
         
         var currentModel = levelModels[index]
-		switch state {
+		switch correctAnswer {
 		case true:
             currentModel.image = Constants.greenButton
 		case false:
@@ -93,6 +87,10 @@ class MainGameViewController: UIViewController {
 		}
 		levelModels[index] = currentModel
         actualViewModel = levelModels
+	}
+	
+	@objc private func dismissSelf() {
+		dismiss(animated: true)
 	}
     
     private func setConstraints() {
