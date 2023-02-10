@@ -152,6 +152,7 @@ extension MainGameViewController: UITableViewDelegate, UITableViewDataSource {
         let level = actualViewModel[indexPath.row]
         cell.setViewModel(level: level)
         cell.backgroundColor = UIColor.clear
+        cell.selectionStyle = .none
         return cell
     }
 }
