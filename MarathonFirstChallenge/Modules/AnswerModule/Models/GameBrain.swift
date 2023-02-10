@@ -50,12 +50,14 @@ struct GameBrain {
 	var userCanMakeMistake = true
 	
 	mutating func createQuestionArray() {
-		easy.shuffle()
-		normal.shuffle()
-		hard.shuffle()
-		newGameQuestion.append(contentsOf: easy)
-		newGameQuestion.append(contentsOf: normal)
-		newGameQuestion.append(contentsOf: hard)
+        if newGameQuestion.isEmpty {
+            easy.shuffle()
+            normal.shuffle()
+            hard.shuffle()
+            newGameQuestion.append(contentsOf: easy)
+            newGameQuestion.append(contentsOf: normal)
+            newGameQuestion.append(contentsOf: hard)
+        }
 	}
 	
 	mutating func resetQuestionArray() {
