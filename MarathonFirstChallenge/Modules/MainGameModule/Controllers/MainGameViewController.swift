@@ -39,14 +39,12 @@ class MainGameViewController: UIViewController {
     }()
     
     private lazy var tableView = UITableView()
-    private lazy var levels: [LevelsModel] = []
-    private lazy var data = FetchDataModel()
+    private var viewModels: [LevelsModel] = []
     
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        levels = data.fetchData()
         setupTableViewDelegates()
         setupViews()
         setConstraints()
@@ -69,6 +67,10 @@ class MainGameViewController: UIViewController {
     
     @objc private func dismissSelf() {
         dismiss(animated: true)
+    }
+    
+    func cteateLevelsViewModel() {
+        
     }
     
     private func setConstraints() {
