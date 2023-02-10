@@ -11,7 +11,7 @@ import UIKit
 class SplashViewController: UIViewController {
 	enum Constants {
 		static let backgroundImage: String = "background_image"
-		static let logoImage: String = "image_logo"
+		static let logoImage: String = "logo_image"
 		static let logoImageViewSize: CGFloat = 267.0
 	}
 	

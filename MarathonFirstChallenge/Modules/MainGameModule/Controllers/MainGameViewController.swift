@@ -10,21 +10,23 @@ import UIKit
 
 class MainGameViewController: UIViewController {
     enum Constants {
-        static let levelCell = "cell"
-        static let backgroundImage = "background_image"
-        static let logoImage = "logo_image"
-		static let blueButton = "levels_blue_button"
-		static let darkButton = "levels_dark_blue_button"
-		static let greenButton = "levels_green_button"
-		static let yellowButton = "levels_yellow_button"
-		static let redButton = "answer_button_red"
-        static let tableViewTopSpacing: CGFloat = -50.0
+        static let levelCell: String = "cell"
+        static let backgroundImage: String = "background_image"
+        static let logoImage: String = "logo_image"
+		static let blueButton: String = "levels_blue_button"
+		static let darkButton: String = "levels_dark_blue_button"
+		static let greenButton: String = "levels_green_button"
+		static let yellowButton: String = "levels_yellow_button"
+		static let redButton: String = "answer_button_red"
+		static let continueLabelText: String = "Tap to continue"
+        static let tableViewTopSpacing: CGFloat = -30.0
         static let tableViewSideSpacing: CGFloat = 32.0
         static let tableViewBottomSpacing: CGFloat = -20.0
         static let tableViewRowHeight: CGFloat = 42.0
-        static let logoViewTopSpacing: CGFloat = 40.0
-        static let logoViewHeight: CGFloat = 150.0
-        static let logoViewWidth: CGFloat = 150.0
+        static let logoViewTopSpacing: CGFloat = 10.0
+        static let logoViewHeight: CGFloat = 85.0
+        static let logoViewWidth: CGFloat = 85.0
+		static let continueLabelBottomSpacing: CGFloat = 15
     }
     
     //MARK: - Create UI
@@ -41,6 +43,14 @@ class MainGameViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
+	
+	private lazy var continueLabel: UILabel = {
+		let label = UILabel()
+		label.text = Constants.continueLabelText
+		label.textColor = .whiteTitleColor
+		label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+		return label
+	}()
     
     private lazy var tableView = UITableView()
     private lazy var actualViewModel: [LevelsModel] = []
@@ -58,11 +68,14 @@ class MainGameViewController: UIViewController {
     }
 
     private func setupViews() {
-        view.addSubview(backgroundImageView)
-        backgroundImageView.addSubview(tableView)
-        backgroundImageView.addSubview(logoImageView)
         tableView.backgroundColor = UIColor.clear
         tableView.rowHeight = Constants.tableViewRowHeight
+		continueLabel.blink()
+		
+		view.addSubview(backgroundImageView)
+		view.addSubview(tableView)
+		view.addSubview(logoImageView)
+		view.addSubview(continueLabel)
     }
 	
 	func setupTableViewDelegates() {
@@ -89,14 +102,18 @@ class MainGameViewController: UIViewController {
         actualViewModel = levelModels
 	}
 	
+	//MARK: - Button function
+	
 	@objc private func dismissSelf() {
 		dismiss(animated: true)
 	}
+	
+	//MARK: - setConstraints
     
     private func setConstraints() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.logoViewTopSpacing),
+			logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.logoViewTopSpacing),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: Constants.logoViewWidth),
             logoImageView.heightAnchor.constraint(equalToConstant: Constants.logoViewHeight),
@@ -111,10 +128,15 @@ class MainGameViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.tableViewTopSpacing),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.tableViewBottomSpacing),
+            tableView.bottomAnchor.constraint(equalTo: continueLabel.topAnchor, constant: Constants.tableViewBottomSpacing),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.tableViewSideSpacing),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.tableViewSideSpacing)
         ])
+		continueLabel.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			continueLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.continueLabelBottomSpacing),
+			continueLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+		])
     }
 }
 

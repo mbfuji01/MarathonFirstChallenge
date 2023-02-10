@@ -10,87 +10,107 @@ import UIKit
 
 class ResultViewController: UIViewController {
 	enum Constants {
-		static let anyVar: String = "anyVar"
+		static let backgroundImage: String = "background_image"
+		static let logoImage: String = "logo_image"
+		static let gameOverText: String = "Game Over"
+		static let scoreText: String = "All-time Best Score"
+		static let coinImage: String = "coin_image"
+		static let selfBestScore: String = "$0"
+		static let newGameButtonImage: String = "title_yellow_button"
+		static let mainScreenButtonImage: String = "title_dark_blue_button"
+		static let teamButtonText: String = "© TEAM 10"
+		static let newGameButtonText: String = "New game"
+		static let mainScreenButtonText: String = "Main screen"
+		static let logoImageViewSize: CGFloat = 195.0
+		static let logoImageTopSpacing: CGFloat = 150.0
+		static let generalInfoTopSpacing: CGFloat = 16.0
+		static let generalInfoSideSpacing: CGFloat = 32
+		static let scoreTopSpacing: CGFloat = 8
+		static let teamButtonBottomSpacing: CGFloat = 30
+		static let newGameButtonSideSpacing: CGFloat = 32
+		static let buttonBottomSpacing: CGFloat = 20
 	}
 	
-    
 	//MARK: - Create UI
-    private lazy var backIsImageView: UIImageView = {
-           let imageView = UIImageView()
-           imageView.image = UIImage(named: "background_image")  //Image Background
-   //        imageView.contentMode = .scaleAspectFill
-        imageView.isUserInteractionEnabled = true
-           
-           return imageView
-       }()
-    
-    private lazy var logoIsImage:UIImageView  = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "logo_image") // this's logo image
-        return imageView
-        }()
-    
-    private lazy var upIsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .white
-        button.setTitle("Сontinue game", for: .normal) //Button one
-        button.backgroundColor = .clear
-        button.setBackgroundImage(UIImage(named: "title_yellow_button"), for: .normal)
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-           return button
-       }()
-    
-    private lazy var downIsButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .white
-        button.setTitle("New game", for: .normal)
-        button.setBackgroundImage(UIImage(named: "title_derk_blue_button"), for: .normal)
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        return button
-    }()
-       
-    private lazy var myUpLabelOne: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
-//        label.font = UIFont(name: "Avenir", size: 28)
-        label.text = "Who Wants"
-        label.numberOfLines = 0
-        label.textColor = .white
-        return label
-        
-    }()
-    
-    private lazy var myUpLabelTwo:UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
-        label.text = "to be a Millionare"
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var myLittleLabel: UILabel = {
-       let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
-        label.text = "All-time Best Score"
-        label.textColor = .systemGray3
-        return label
-    }()
-    
-    private lazy var myDownLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-        label.text = "$15,000"
-        label.textColor = .white
-        return label
-    }()
-    
-    private lazy var teamLabl: UILabel = {
-        let lable = UILabel()
-        lable.font = UIFont.systemFont(ofSize: 10, weight: .medium)
-        lable.text = "©TEAM 10"
-        lable.textColor = .white
-        return lable
-    }()
+	
+	private lazy var backgroundImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: Constants.backgroundImage)
+		imageView.contentMode = .scaleAspectFill
+		return imageView
+	}()
+	
+	private lazy var logoImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: Constants.logoImage)
+		return imageView
+	}()
+	
+	private lazy var gameOverLabel: UILabel = {
+		let label = UILabel()
+		label.text = Constants.gameOverText
+		label.font = UIFont.systemFont(ofSize: 32, weight: .bold)
+		label.textColor = .whiteTitleColor
+		label.numberOfLines = 2
+		label.textAlignment = .center
+		return label
+	}()
+	
+	private lazy var bestScoreLabel: UILabel = {
+		let label = UILabel()
+		label.text = Constants.scoreText
+		label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+		label.textColor = .descriptionTitleColor
+		label.textAlignment = .center
+		return label
+	}()
+	
+	private lazy var coinImageView: UIImageView = {
+		let imageView = UIImageView()
+		imageView.image = UIImage(named: Constants.coinImage)
+		return imageView
+	}()
+	
+	private lazy var selfBestScoreLabel: UILabel = {
+		let label = UILabel()
+		label.text = Constants.selfBestScore
+		label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+		label.textColor = .whiteTitleColor
+		label.textAlignment = .center
+		return label
+	}()
+	
+	private lazy var newGameButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.setTitle(Constants.newGameButtonText, for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+		button.tintColor = .whiteTitleColor
+		button.setBackgroundImage(UIImage(named: Constants.newGameButtonImage), for: .normal)
+		button.addTarget(self, action: #selector(newGameButtonTapped), for: .touchUpInside)
+		return button
+	}()
+	
+	private lazy var mainScreenButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.setTitle(Constants.mainScreenButtonText, for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+		button.tintColor = .whiteTitleColor
+		button.setBackgroundImage(UIImage(named: Constants.mainScreenButtonImage), for: .normal)
+		button.addTarget(self, action: #selector(mainScreenButtonTapped), for: .touchUpInside)
+		return button
+	}()
+	
+	private lazy var teamButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.setTitle(Constants.teamButtonText, for: .normal)
+		button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+		button.tintColor = .whiteTitleColor
+		button.addTarget(self, action: #selector(teamButtonTapped), for: .touchUpInside)
+		return button
+	}()
+	 
+	private lazy var scoreStackView = UIStackView()
+	private lazy var generalInformationStackView = UIStackView()
     
 	//MARK: - Lifecycle
 	
@@ -101,97 +121,83 @@ class ResultViewController: UIViewController {
 	}
 	
 	private func setupViews() {
-        view.backgroundColor = .white
-        view.addSubview(backIsImageView)
-        view.addSubview(logoIsImage)
-        view.addSubview(myUpLabelOne)
-        view.addSubview(myUpLabelTwo)
-        view.addSubview(myLittleLabel)
-        view.addSubview(myDownLabel)
-        view.addSubview(upIsButton)
-        view.addSubview(downIsButton)
-        view.addSubview(teamLabl)
-        
-//        backIsImageView.addSubview(nameButton)
-
+		generalInformationStackView = UIStackView(arrangedSubviews: [
+			gameOverLabel,
+			bestScoreLabel
+		], axis: .vertical, spacing: 16)
+		
+		scoreStackView = UIStackView(arrangedSubviews: [
+			coinImageView,
+			selfBestScoreLabel
+		], axis: .horizontal, spacing: 1)
+		
+		view.addSubview(backgroundImageView)
+		view.addSubview(logoImageView)
+		view.addSubview(generalInformationStackView)
+		view.addSubview(scoreStackView)
+		view.addSubview(newGameButton)
+		view.addSubview(mainScreenButton)
+		view.addSubview(teamButton)
 	}
+	
+	//MARK: - Button function
     
-    @objc
-        private func backButtonTapped() {
-            print("backButtonTapped")
-        }
+	@objc private func newGameButtonTapped() {
+		let mainGameVC = MainGameViewController()
+		self.navigationController?.pushViewController(mainGameVC, animated: true)
+	}
+	
+	@objc private func mainScreenButtonTapped() {
+		let welcomeVC = WelcomeViewController()
+		self.navigationController?.pushViewController(welcomeVC, animated: true)
+	}
+	
+	@objc private func teamButtonTapped() {
+		let teamVC = TeamViewController()
+		self.present(teamVC, animated: true, completion: nil)
+	}
+	
+	//MARK: - setConstraints
 	
 	private func setConstraints() {
-        backIsImageView.frame = view.frame
-        logoIsImage.translatesAutoresizingMaskIntoConstraints = false
+		backgroundImageView.frame = view.frame
+		logoImageView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-            logoIsImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-            logoIsImage.widthAnchor.constraint(equalToConstant: 195),
-            logoIsImage.heightAnchor.constraint(equalToConstant: 195),
-            logoIsImage.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            
+			logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.logoImageTopSpacing),
+			logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			logoImageView.widthAnchor.constraint(equalToConstant: Constants.logoImageViewSize),
+			logoImageView.heightAnchor.constraint(equalToConstant: Constants.logoImageViewSize),
 		])
-    
-        upIsButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            upIsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 630),
-            upIsButton.widthAnchor.constraint(equalToConstant: 285),
-            upIsButton.heightAnchor.constraint(equalToConstant: 50),
-            upIsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            
-        ])
-        
-        downIsButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            downIsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 688),
-            downIsButton.widthAnchor.constraint(equalToConstant: 285),
-            downIsButton.heightAnchor.constraint(equalToConstant: 50),
-            downIsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            
-        ])
-        
-        myUpLabelOne.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            myUpLabelOne.topAnchor.constraint(equalTo: view.topAnchor, constant: 399),
-            myUpLabelOne.widthAnchor.constraint(equalToConstant: 168),
-            myUpLabelOne.heightAnchor.constraint(equalToConstant: 20),
-            myUpLabelOne.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            
-        ])
-        
-        myUpLabelTwo.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            myUpLabelTwo.topAnchor.constraint(equalTo: view.topAnchor, constant: 440),
-            myUpLabelTwo.widthAnchor.constraint(equalToConstant: 223),
-            myUpLabelTwo.heightAnchor.constraint(equalToConstant: 35),
-            myUpLabelTwo.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            
-        ])
-        
-        myLittleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-        myLittleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 506),
-        myLittleLabel.widthAnchor.constraint(equalToConstant: 127),
-        myLittleLabel.heightAnchor.constraint(equalToConstant: 28),
-        myLittleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        
-    ])
-        
-        myDownLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            myDownLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 520),
-            myDownLabel.widthAnchor.constraint(equalToConstant: 110),
-            myDownLabel.heightAnchor.constraint(equalToConstant: 75),
-            myDownLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-       ])
-        
-        
-        teamLabl.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            teamLabl.topAnchor.constraint(equalTo: view.topAnchor, constant: 724),
-            teamLabl.widthAnchor.constraint(equalToConstant: 54),
-            teamLabl.heightAnchor.constraint(equalToConstant: 78),
-            teamLabl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-       ])
+		generalInformationStackView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			generalInformationStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.generalInfoTopSpacing),
+			generalInformationStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.generalInfoSideSpacing),
+			generalInformationStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.generalInfoSideSpacing),
+			generalInformationStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+		])
+		scoreStackView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			scoreStackView.topAnchor.constraint(equalTo: bestScoreLabel.bottomAnchor, constant: Constants.scoreTopSpacing),
+			scoreStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+		])
+		newGameButton.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			newGameButton.bottomAnchor.constraint(equalTo: mainScreenButton.topAnchor, constant: -Constants.buttonBottomSpacing),
+			newGameButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.newGameButtonSideSpacing),
+			newGameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.newGameButtonSideSpacing),
+			newGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		])
+		mainScreenButton.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			mainScreenButton.bottomAnchor.constraint(equalTo: teamButton.topAnchor, constant: -Constants.buttonBottomSpacing),
+			mainScreenButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.newGameButtonSideSpacing),
+			mainScreenButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.newGameButtonSideSpacing),
+			mainScreenButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		])
+		teamButton.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			teamButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -Constants.teamButtonBottomSpacing),
+			teamButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+		])
 	}
 }
