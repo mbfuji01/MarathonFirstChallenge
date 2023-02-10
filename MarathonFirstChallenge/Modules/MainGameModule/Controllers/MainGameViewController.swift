@@ -28,7 +28,7 @@ class MainGameViewController: UIViewController {
 		static let redButton = "answer_button_red"
     }
 	
-	var levelModels = LevelsViewModel.getLevelModels
+	var levelModels = LevelsViewModel().getLevelModels()
     
     //MARK: - Create UI
     
@@ -76,16 +76,16 @@ class MainGameViewController: UIViewController {
     }
 	
 	private func updateViewModel(for index: Int, state: Bool) {
-		let currentModel = levelModels[index]
+        var currentModel = levelModels[index]
 		switch state {
 		case true:
-			currentModel.image = Constants.greenButton
+            currentModel.image = Constants.greenButton
 		case false:
 			currentModel.image = Constants.redButton
 		}
 		levelModels[index] = currentModel
 
-		let beforeModel = levelModels[index-1]
+        var beforeModel = levelModels[index-1]
 		beforeModel.image = Constants.darkButton
 		levelModels[index] = beforeModel
 	}

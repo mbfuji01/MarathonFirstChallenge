@@ -8,9 +8,9 @@
 import Foundation
 
 struct LevelsModel {
-	let numberOfQuestion: Int
-	let winAmount: Int
-	let image: String
+	var numberOfQuestion: Int
+	var winAmount: Int
+	var image: String
 }
 
 class LevelsViewModel {
