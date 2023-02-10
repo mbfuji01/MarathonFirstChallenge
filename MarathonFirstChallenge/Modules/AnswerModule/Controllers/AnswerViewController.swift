@@ -124,7 +124,9 @@ class AnswerViewController: UIViewController {
 	private lazy var answerButtonStackView = UIStackView()
 	private lazy var helpButtonStackView = UIStackView()
 	private lazy var correctAnswer = ""
-	let gameBrain = GameBrain()
+	var gameBrain = GameBrain()
+	private var leftBarButtonItem : UIBarButtonItem!
+	private var navigationLeftButton : UIButton!
 	
 	//MARK: - Lifecycle
 	
@@ -134,6 +136,11 @@ class AnswerViewController: UIViewController {
 		setConstraints()
 		startTime()
 		playSound()
+		gameBrain.createQuestionArray()
+	}
+
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
 		setViewModel()
 	}
 	
@@ -169,6 +176,7 @@ class AnswerViewController: UIViewController {
 		fourAnswerButton.text = data[4]
 		correctAnswer = data[5]
 		questionNumberLabel.text = data[6]
+		buttonIsEnabled(with: true)
 	}
 	
 	//MARK: - Music
@@ -210,9 +218,7 @@ class AnswerViewController: UIViewController {
 	}
 	
 	//MARK: - GameBrain func
-	
-	
-	
+
 //	private func goToKuda() {
 //		if userAnswer == true {
 //			goToMainScreen
@@ -222,6 +228,16 @@ class AnswerViewController: UIViewController {
 //			goToResult()
 //		}
 //	}
+	
+	private func buttonIsEnabled(with userAnswer: Bool) {
+		oneAnswerButton.isEnabled = userAnswer
+		twoAnswerButton.isEnabled = userAnswer
+		threeAnswerButton.isEnabled = userAnswer
+		fourAnswerButton.isEnabled = userAnswer
+		helpButton.isEnabled = userAnswer
+		audienceButton.isEnabled = userAnswer
+		callButton.isEnabled = userAnswer
+	}
 	
 	
 	//MARK: - Button Function
@@ -235,6 +251,7 @@ class AnswerViewController: UIViewController {
 			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
 			//play bad music
 		}
+		buttonIsEnabled(with: false)
 	}
 
 	@objc private func helpButtonTapped() {

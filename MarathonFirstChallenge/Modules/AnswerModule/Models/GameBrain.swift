@@ -36,7 +36,7 @@ struct GameBrain {
 		Question(question: "Если подкласс переопределяет назначенный инициализатор суперкласса и так же реализует соответсвующий протоколу инициализатор, какими модификаторами его нобходимо обозначить?",
 				 answers: ["static и override", "override и mutating", "required и override", "mutating и static"], correctAnswer: "required и override"),
 		Question(question: "Какую точность в десятичных знаках имеет тип Float?",
-				 answers: ["4 десятичных цифры", "12 десятичных цифр", "6 десятичных цифр", "10 десятичныз цифр"], correctAnswer: "6 десятичных цифр"),
+				 answers: ["4 десятичных цифры", "12 десятичных цифр", "6 десятичных цифр", "10 десятичных цифр"], correctAnswer: "6 десятичных цифр"),
 		Question(question: "Структурный шаблон проектирования, расширяющий функциональность объекта без использования наследования",
 				 answers: ["Command", "Decorator", "Chain Of Responsibility", "Mediator"], correctAnswer: "Decorator"),
 		Question(question: "Какой минус есть у паттерна Singleton?",

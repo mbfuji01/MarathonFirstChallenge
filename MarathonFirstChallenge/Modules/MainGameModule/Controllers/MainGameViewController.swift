@@ -64,7 +64,6 @@ class MainGameViewController: UIViewController {
         setupTableViewDelegates()
         setupViews()
         setConstraints()
-        gameBrain.createQuestionArray()
 		createViewModel()
         tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_back"), style: .plain, target: self, action: #selector(dismissSelf))
