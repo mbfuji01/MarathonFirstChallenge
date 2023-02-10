@@ -23,6 +23,17 @@ class AnswerViewController: UIViewController {
 		static let callButtonImage: String = "help_call"
 		static let timerAlertImage: String = "timer_image_alert"
 		static let timerWarningImage: String = "timer_image_warning"
+        static let questionNumberLabelTopSpacing: CGFloat = 15
+        static let currentMoneyLabelTopSpacing: CGFloat = 3
+        static let timerImageViewTopSpacing: CGFloat = 32
+        static let timerImageViewWidth: CGFloat = 93
+        static let timerImageViewHeight: CGFloat = 47
+        static let secondsLabelXCenter: CGFloat = 17
+        static let currentQuestionLabelTopSpacing: CGFloat = 24
+        static let currentQuestionLabelSideSpacing: CGFloat = 30
+        static let answerButtonStackViewSideSpacing: CGFloat = 30
+        static let answerButtonStackViewBottomSpacing: CGFloat = 40
+        static let helpButtonStackViewHeight: CGFloat = 64
 	}
 
 	//MARK: - Create UI
@@ -116,8 +127,8 @@ class AnswerViewController: UIViewController {
 		super.viewDidLoad()
 		setupViews()
 		setConstraints()
-//		startTime()
-//		playSound()
+		startTime()
+		playSound()
 	}
 	
 	private func setupViews() {
@@ -207,44 +218,44 @@ class AnswerViewController: UIViewController {
 		questionNumberLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			questionNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			questionNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 15)
+            questionNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.questionNumberLabelTopSpacing)
 		])
 		currentMoneyLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			currentMoneyLabel.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor),
-			currentMoneyLabel.topAnchor.constraint(equalTo: questionNumberLabel.bottomAnchor, constant: 3)
+            currentMoneyLabel.topAnchor.constraint(equalTo: questionNumberLabel.bottomAnchor, constant: Constants.currentMoneyLabelTopSpacing)
 		])
 		timerImageView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			timerImageView.topAnchor.constraint(equalTo: currentMoneyLabel.bottomAnchor, constant: 32),
+            timerImageView.topAnchor.constraint(equalTo: currentMoneyLabel.bottomAnchor, constant: Constants.timerImageViewTopSpacing),
 			timerImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			timerImageView.widthAnchor.constraint(equalToConstant: 93),
-			timerImageView.heightAnchor.constraint(equalToConstant: 47)
+            timerImageView.widthAnchor.constraint(equalToConstant: Constants.timerImageViewWidth),
+            timerImageView.heightAnchor.constraint(equalToConstant: Constants.timerImageViewHeight)
 		])
 		secondsLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			secondsLabel.centerXAnchor.constraint(equalTo: timerImageView.centerXAnchor, constant: 17),
+            secondsLabel.centerXAnchor.constraint(equalTo: timerImageView.centerXAnchor, constant: Constants.secondsLabelXCenter),
 			secondsLabel.centerYAnchor.constraint(equalTo: timerImageView.centerYAnchor)
 		])
 		currentQuestionLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			currentQuestionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-			currentQuestionLabel.topAnchor.constraint(equalTo: timerImageView.bottomAnchor, constant: 24),
-			currentQuestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-			currentQuestionLabel.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -30)
+            currentQuestionLabel.topAnchor.constraint(equalTo: timerImageView.bottomAnchor, constant: Constants.currentQuestionLabelTopSpacing),
+            currentQuestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.currentQuestionLabelSideSpacing),
+			currentQuestionLabel.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -Constants.currentQuestionLabelSideSpacing)
 		])
 		answerButtonStackView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			answerButtonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-			answerButtonStackView.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -30),
-			answerButtonStackView.widthAnchor.constraint(equalToConstant: view.frame.width-60),
-			answerButtonStackView.bottomAnchor.constraint(equalTo: helpButtonStackView.topAnchor, constant: -40)
+            answerButtonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.answerButtonStackViewSideSpacing),
+			answerButtonStackView.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -Constants.answerButtonStackViewSideSpacing),
+			answerButtonStackView.widthAnchor.constraint(equalToConstant: view.frame.width-Constants.answerButtonStackViewSideSpacing*2),
+            answerButtonStackView.bottomAnchor.constraint(equalTo: helpButtonStackView.topAnchor, constant: -Constants.answerButtonStackViewBottomSpacing)
 		])
 		helpButtonStackView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			helpButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			helpButtonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-			helpButtonStackView.heightAnchor.constraint(equalToConstant: 64)
+            helpButtonStackView.heightAnchor.constraint(equalToConstant: Constants.helpButtonStackViewHeight)
 		])
 	}
 }
