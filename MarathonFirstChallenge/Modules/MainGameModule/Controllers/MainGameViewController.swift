@@ -59,6 +59,7 @@ class MainGameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addTaps()
         setupTableViewDelegates()
         setupViews()
         setConstraints()
@@ -101,7 +102,19 @@ class MainGameViewController: UIViewController {
 		levelModels[index] = currentModel
         actualViewModel = levelModels
 	}
-	
+    
+    private func addTaps() {
+        let tapScreen = UITapGestureRecognizer(target: self, action: #selector(routeToAnswer))
+        tapScreen.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapScreen)
+    }
+    
+    @objc private func routeToAnswer() {
+        let answerVC = AnswerViewController()
+        self.navigationController?.pushViewController(answerVC, animated: true)
+        
+    }
+    
 	//MARK: - Button function
 	
 	@objc private func dismissSelf() {
