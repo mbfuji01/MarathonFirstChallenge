@@ -49,37 +49,49 @@ class ResultViewController: UIViewController {
         return button
     }()
        
-    private lazy var myUpLabel: UILabel = {
+    private lazy var myUpLabelOne: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 21, weight: .bold)
-        label.text = "Who Wants to be a Millionare"
+        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+//        label.font = UIFont(name: "Avenir", size: 28)
+        label.text = "Who Wants"
+        label.numberOfLines = 0
         label.textColor = .white
         return label
         
     }()
     
+    private lazy var myUpLabelTwo:UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        label.text = "to be a Millionare"
+        label.textColor = .white
+        return label
+    }()
+    
     private lazy var myLittleLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 10, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
         label.text = "All-time Best Score"
         label.textColor = .systemGray3
         return label
     }()
     
-       private lazy var myDownLabel: UILabel = {
-           let label = UILabel()
-           label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
-           label.text = "$15,000"
-           label.textColor = .white
-           return label
-           }()
+    private lazy var myDownLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        label.text = "$15,000"
+        label.textColor = .white
+        return label
+    }()
+    
     private lazy var teamLabl: UILabel = {
         let lable = UILabel()
         lable.font = UIFont.systemFont(ofSize: 10, weight: .medium)
-        lable.text = "©Team 10"
+        lable.text = "©TEAM 10"
         lable.textColor = .white
         return lable
     }()
+    
 	//MARK: - Lifecycle
 	
 	override func viewDidLoad() {
@@ -92,7 +104,8 @@ class ResultViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(backIsImageView)
         view.addSubview(logoIsImage)
-        view.addSubview(myUpLabel)
+        view.addSubview(myUpLabelOne)
+        view.addSubview(myUpLabelTwo)
         view.addSubview(myLittleLabel)
         view.addSubview(myDownLabel)
         view.addSubview(upIsButton)
@@ -122,7 +135,7 @@ class ResultViewController: UIViewController {
         upIsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             upIsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 630),
-            upIsButton.widthAnchor.constraint(equalToConstant: 184),
+            upIsButton.widthAnchor.constraint(equalToConstant: 285),
             upIsButton.heightAnchor.constraint(equalToConstant: 50),
             upIsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
@@ -131,25 +144,34 @@ class ResultViewController: UIViewController {
         downIsButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             downIsButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 688),
-            downIsButton.widthAnchor.constraint(equalToConstant: 184),
+            downIsButton.widthAnchor.constraint(equalToConstant: 285),
             downIsButton.heightAnchor.constraint(equalToConstant: 50),
             downIsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
         ])
         
-        myUpLabel.translatesAutoresizingMaskIntoConstraints = false
+        myUpLabelOne.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myUpLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 440),
-            myUpLabel.widthAnchor.constraint(equalToConstant: 283),
-            myUpLabel.heightAnchor.constraint(equalToConstant: 27),
-            myUpLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            myUpLabelOne.topAnchor.constraint(equalTo: view.topAnchor, constant: 399),
+            myUpLabelOne.widthAnchor.constraint(equalToConstant: 168),
+            myUpLabelOne.heightAnchor.constraint(equalToConstant: 20),
+            myUpLabelOne.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            
+        ])
+        
+        myUpLabelTwo.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            myUpLabelTwo.topAnchor.constraint(equalTo: view.topAnchor, constant: 440),
+            myUpLabelTwo.widthAnchor.constraint(equalToConstant: 223),
+            myUpLabelTwo.heightAnchor.constraint(equalToConstant: 35),
+            myUpLabelTwo.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             
         ])
         
         myLittleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-        myLittleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 516),
-        myLittleLabel.widthAnchor.constraint(equalToConstant: 100),
+        myLittleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 506),
+        myLittleLabel.widthAnchor.constraint(equalToConstant: 127),
         myLittleLabel.heightAnchor.constraint(equalToConstant: 28),
         myLittleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         
@@ -167,7 +189,7 @@ class ResultViewController: UIViewController {
         teamLabl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             teamLabl.topAnchor.constraint(equalTo: view.topAnchor, constant: 724),
-            teamLabl.widthAnchor.constraint(equalToConstant: 50),
+            teamLabl.widthAnchor.constraint(equalToConstant: 54),
             teamLabl.heightAnchor.constraint(equalToConstant: 78),
             teamLabl.centerXAnchor.constraint(equalTo: view.centerXAnchor)
        ])
