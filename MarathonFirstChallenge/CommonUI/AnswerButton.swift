@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class AnswerButton: UIButton {
-	
 	var text: String = "" {
 		didSet {
 			setTitle(text, for: .normal)
