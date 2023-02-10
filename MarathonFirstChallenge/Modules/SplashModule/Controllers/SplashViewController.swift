@@ -36,8 +36,9 @@ class SplashViewController: UIViewController {
 		setupViews()
 		setConstraints()
 		setTimer()
+        navigationController?.isNavigationBarHidden =  true
 	}
-	
+    
 	private func setupViews() {
 		view.addSubview(backgroundImageView)
 		view.addSubview(logoImageView)

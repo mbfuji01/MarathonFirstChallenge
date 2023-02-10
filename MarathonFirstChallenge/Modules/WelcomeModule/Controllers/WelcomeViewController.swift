@@ -117,6 +117,7 @@ class WelcomeViewController: UIViewController {
 		super.viewDidLoad()
 		setupViews()
 		setConstraints()
+        //self.navigationController?.isNavigationBarHidden =  true
 	}
     
     private func setupViews() {

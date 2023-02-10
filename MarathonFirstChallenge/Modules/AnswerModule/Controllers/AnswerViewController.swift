@@ -16,6 +16,9 @@ class AnswerViewController: UIViewController {
 		static let questionNumberText: String = "QUESTION #1"
 		static let currentMoneyText: String = "$500"
 		static let currentQuestionText: String = "How many continents are there on planet Earth?"
+        static let takeAnswerSoundName: String = "take_answer"
+        static let rightAnswerSoundName: String = "right_answer"
+        static let wrongAnswerSoundName: String = "wrong_answer"
 		static let waitingSoundName: String = "waiting"
 		static let soundExtension: String = "wav"
 		static let helpButtonImage: String = "help_50_50"
@@ -120,6 +123,13 @@ class AnswerViewController: UIViewController {
 		button.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
 		return button
 	}()
+    
+//    private lazy var backButton: UIBarButtonItem = {
+//    let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(dismissSelf))
+//        backButton.tintColor = UIColor.white
+//        self.navigationItem.leftBarButtonItem = backButton
+//        return backButton
+//    }()
 	
 	private lazy var answerButtonStackView = UIStackView()
 	private lazy var helpButtonStackView = UIStackView()
@@ -127,6 +137,9 @@ class AnswerViewController: UIViewController {
 	var gameBrain = GameBrain()
 	private var leftBarButtonItem : UIBarButtonItem!
 	private var navigationLeftButton : UIButton!
+    private var isTimerOut: Bool = true
+    private var isAnswerRight: Bool = true
+    private var clickedButton: UIButton = .init()
 	
 	//MARK: - Lifecycle
 	
@@ -135,15 +148,26 @@ class AnswerViewController: UIViewController {
 		setupViews()
 		setConstraints()
 		startTime()
-		playSound()
+        playSound(musicName: Constants.waitingSoundName)
 		gameBrain.createQuestionArray()
-	}
+       
+        let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(dismissSelf))
+                backButton.tintColor = UIColor.white
+                self.navigationItem.leftBarButtonItem = backButton
+    }
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		setViewModel()
+        
 	}
-	
+    
+    @objc private func dismissSelf() {
+        navigationController?.popViewController(animated: true)
+        player.stop()
+        
+    }
+    
 	private func setupViews() {
 		answerButtonStackView = UIStackView(arrangedSubviews: [
 			oneAnswerButton,
@@ -182,8 +206,8 @@ class AnswerViewController: UIViewController {
 	//MARK: - Music
 	
 	var player: AVAudioPlayer!
-	func playSound() {
-		let url = Bundle.main.url(forResource: Constants.waitingSoundName, withExtension: Constants.soundExtension)
+    func playSound(musicName: String) {
+        let url = Bundle.main.url(forResource: musicName, withExtension: Constants.soundExtension)
 		player = try! AVAudioPlayer(contentsOf: url!)
 		player.play()
 	}
@@ -192,19 +216,29 @@ class AnswerViewController: UIViewController {
 
 	var timeForAnswer = 31
 	var timer = Timer()
+    var timeToStop = 0
+    var timeforAnswerWaiting = 0
 
 	@objc func startTime() {
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(AnswerViewController.updateTimer)), userInfo: nil, repeats: true)
 	}
 
 	@objc func updateTimer() {
-		if timeForAnswer > 0 {
+        
+		if timeForAnswer > 0 && isTimerOut {
 			timeForAnswer -= 1
-		}else{
-			timeForAnswer = 0
-		}
-
-		secondsLabel.text = "\(timeForAnswer)"
+            timeToStop = timeForAnswer
+		}else if (isTimerOut == false){
+			timeForAnswer = timeToStop
+            timeforAnswerWaiting += 1
+        }else{
+            timeForAnswer = 0
+        }
+        secondsLabel.text = "\(timeForAnswer)"
+        if timeforAnswerWaiting == 5 {
+            checkForRightAnswer(clickedButton)
+            isAnswerRight = false;
+        }
 
 		switch timeForAnswer {
 		case 15:
@@ -243,16 +277,21 @@ class AnswerViewController: UIViewController {
 	//MARK: - Button Function
 	
 	@objc private func answerButtonTapped(_ sender: UIButton) {
-		// timer 5 sec func with neponatnaya music
-		if sender.currentTitle == correctAnswer {
-			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
-			//play good music
-		} else {
-			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
-			//play bad music
-		}
-		buttonIsEnabled(with: false)
+        isTimerOut = false
+        playSound(musicName: Constants.takeAnswerSoundName)
+        buttonIsEnabled(with: false)
+        clickedButton = sender
 	}
+    private func checkForRightAnswer(_ sender: UIButton){
+            if sender.currentTitle == correctAnswer {
+                sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
+                playSound(musicName: Constants.rightAnswerSoundName)
+            } else {
+                sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
+                playSound(musicName: Constants.wrongAnswerSoundName)
+            
+            }
+    }
 
 	@objc private func helpButtonTapped() {
 		print("helpButtonTapped")

@@ -56,6 +56,7 @@ class MainGameViewController: UIViewController {
     private lazy var actualViewModel: [LevelsModel] = []
     private lazy var gameBrain = GameBrain()
     
+   
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -66,9 +67,17 @@ class MainGameViewController: UIViewController {
         setConstraints()
 		createViewModel()
         tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow_back"), style: .plain, target: self, action: #selector(dismissSelf))
+    
+        self.navigationController?.isNavigationBarHidden =  false
+        
+        let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(backViewAction))
+            backButton.tintColor = UIColor.white
+            self.navigationItem.leftBarButtonItem = backButton
     }
-
+    @objc private func backViewAction() {
+        navigationController?.popViewController(animated: true)
+        navigationController?.isNavigationBarHidden =  true
+    }
     private func setupViews() {
         tableView.backgroundColor = UIColor.clear
         tableView.rowHeight = Constants.tableViewRowHeight

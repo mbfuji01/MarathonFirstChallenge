@@ -22,11 +22,14 @@
 		185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */; };
 		185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CE298FFEC50046BC7F /* UIView + Extensions.swift */; };
 		185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067D1298FFF9C0046BC7F /* UIColor+App.swift */; };
+		18FAA541299539FF0043DAD5 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA540299539FF0043DAD5 /* AnswerButton.swift */; };
+		AF30F2892996F8E6007DE2C4 /* wrong_answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF30F2862996F8E5007DE2C4 /* wrong_answer.wav */; };
+		AF30F28A2996F8E6007DE2C4 /* right_answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF30F2872996F8E6007DE2C4 /* right_answer.wav */; };
+		AF30F28B2996F8E6007DE2C4 /* take_answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF30F2882996F8E6007DE2C4 /* take_answer.wav */; };
+		AF8EEB3029959370005903A4 /* waiting.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF8EEB2F29959370005903A4 /* waiting.wav */; };
 		EEA3751B2995592000144A41 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA3751A2995592000144A41 /* RulesViewController.swift */; };
 		EEA3751F299569EC00144A41 /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA3751E299569EC00144A41 /* TeamViewController.swift */; };
 		EEA375212995A60A00144A41 /* UILabel+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA375202995A60A00144A41 /* UILabel+App.swift */; };
-		18FAA541299539FF0043DAD5 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA540299539FF0043DAD5 /* AnswerButton.swift */; };
-		AF8EEB3029959370005903A4 /* waiting.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF8EEB2F29959370005903A4 /* waiting.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,11 +50,14 @@
 		185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		185067CE298FFEC50046BC7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		185067D1298FFF9C0046BC7F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
+		18FAA540299539FF0043DAD5 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
+		AF30F2862996F8E5007DE2C4 /* wrong_answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong_answer.wav; sourceTree = "<group>"; };
+		AF30F2872996F8E6007DE2C4 /* right_answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = right_answer.wav; sourceTree = "<group>"; };
+		AF30F2882996F8E6007DE2C4 /* take_answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = take_answer.wav; sourceTree = "<group>"; };
+		AF8EEB2F29959370005903A4 /* waiting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = waiting.wav; sourceTree = "<group>"; };
 		EEA3751A2995592000144A41 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		EEA3751E299569EC00144A41 /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		EEA375202995A60A00144A41 /* UILabel+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+App.swift"; sourceTree = "<group>"; };
-		18FAA540299539FF0043DAD5 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
-		AF8EEB2F29959370005903A4 /* waiting.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = waiting.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +302,9 @@
 		AF8EEB2E2995923C005903A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				AF30F2872996F8E6007DE2C4 /* right_answer.wav */,
+				AF30F2882996F8E6007DE2C4 /* take_answer.wav */,
+				AF30F2862996F8E5007DE2C4 /* wrong_answer.wav */,
 				AF8EEB2F29959370005903A4 /* waiting.wav */,
 			);
 			path = Sounds;
@@ -359,9 +368,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF30F2892996F8E6007DE2C4 /* wrong_answer.wav in Resources */,
+				AF30F28A2996F8E6007DE2C4 /* right_answer.wav in Resources */,
 				18506777298FF28F0046BC7F /* LaunchScreen.storyboard in Resources */,
 				18506774298FF28F0046BC7F /* Assets.xcassets in Resources */,
 				AF8EEB3029959370005903A4 /* waiting.wav in Resources */,
+				AF30F28B2996F8E6007DE2C4 /* take_answer.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
