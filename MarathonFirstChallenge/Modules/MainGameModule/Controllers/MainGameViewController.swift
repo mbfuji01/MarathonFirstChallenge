@@ -21,7 +21,14 @@ class MainGameViewController: UIViewController {
         static let logoViewTopSpacing: CGFloat = 40.0
         static let logoViewHeight: CGFloat = 150.0
         static let logoViewWidth: CGFloat = 150.0
+		static let blueButton = "levels_blue_button"
+		static let darkButton = "levels_dark_blue_button"
+		static let greenButton = "levels_green_button"
+		static let yellowButton = "levels_yellow_button"
+		static let redButton = "answer_button_red"
     }
+	
+	var levelModels = LevelsViewModel.getLevelModels
     
     //MARK: - Create UI
     
@@ -39,7 +46,6 @@ class MainGameViewController: UIViewController {
     }()
     
     private lazy var tableView = UITableView()
-    private var viewModels: [LevelsModel] = []
     
     //MARK: - Lifecycle
     
@@ -68,10 +74,21 @@ class MainGameViewController: UIViewController {
     @objc private func dismissSelf() {
         dismiss(animated: true)
     }
-    
-    func cteateLevelsViewModel() {
-        
-    }
+	
+	private func updateViewModel(for index: Int, state: Bool) {
+		let currentModel = levelModels[index]
+		switch state {
+		case true:
+			currentModel.image = Constants.greenButton
+		case false:
+			currentModel.image = Constants.redButton
+		}
+		levelModels[index] = currentModel
+
+		let beforeModel = levelModels[index-1]
+		beforeModel.image = Constants.darkButton
+		levelModels[index] = beforeModel
+	}
     
     private func setConstraints() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -102,12 +119,12 @@ class MainGameViewController: UIViewController {
 
 extension MainGameViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return levels.count
+		return levelModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.levelCell, for: indexPath) as! MainGameTableViewCell
-        let level = levels[indexPath.row]
+        let level = levelModels[indexPath.row]
         cell.setViewModel(level: level)
         cell.backgroundColor = UIColor.clear
         return cell
