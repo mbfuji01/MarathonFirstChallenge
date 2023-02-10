@@ -12,7 +12,7 @@ class TeamViewController: UIViewController {
         static let closeButtonName: String = "Close"
         static let teamLabelName: String = "Team"
         static let teamMemberOneText: String = "WelcomeModule: Alina Artamonova"
-        static let teamMemberTwoText: String = "AnswerModule: Anastasia Smolya"
+        static let teamMemberTwoText: String = "AnswerModule: Anastasia Smolia"
         static let teamMemberThreeText: String = "MainGameModule: Alexandra Osichka"
         static let teamMemberFourText: String = "SplashModule: Symbat Maidanova"
         static let teamMemberFiveText: String = "ResultModule: Vladimir Smolyar"
