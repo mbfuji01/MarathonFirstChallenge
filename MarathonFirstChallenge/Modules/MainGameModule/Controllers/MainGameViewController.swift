@@ -119,7 +119,8 @@ class MainGameViewController: UIViewController {
     
     @objc private func routeToAnswer() {
         let answerVC = AnswerViewController()
-        self.navigationController?.pushViewController(answerVC, animated: true)
+		answerVC.modalPresentationStyle = .fullScreen
+		present(answerVC, animated: true)
     }
     
 	//MARK: - Button function

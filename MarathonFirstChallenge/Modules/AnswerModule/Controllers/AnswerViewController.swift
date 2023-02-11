@@ -108,7 +108,7 @@ class AnswerViewController: UIViewController {
 		return button
 	}()
 	
-	private lazy var helpButton: UIButton = {
+	private var helpButton: UIButton = {
 		let button = UIButton (type: .system)
 		button.setBackgroundImage(UIImage(named: Constants.helpButtonImage), for: .normal)
 		button.addTarget(self, action: #selector(helpButtonTapped), for: .touchUpInside)
@@ -135,7 +135,7 @@ class AnswerViewController: UIViewController {
     private var isTimerOut: Bool = true
     private var isAnswerRight: Bool = true
     private var clickedButton: UIButton = .init()
-	lazy var gameBrain = GameBrain()
+	lazy var gameBrain = GameBrain.shared
 	
 	//MARK: - Lifecycle
 	
@@ -152,10 +152,6 @@ class AnswerViewController: UIViewController {
                 backButton.tintColor = UIColor.white
                 self.navigationItem.leftBarButtonItem = backButton
     }
-
-	override func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-	}
     
 	private func setupViews() {
 		answerButtonStackView = UIStackView(arrangedSubviews: [
@@ -245,9 +241,6 @@ class AnswerViewController: UIViewController {
 		twoAnswerButton.isEnabled = userAnswer
 		threeAnswerButton.isEnabled = userAnswer
 		fourAnswerButton.isEnabled = userAnswer
-		helpButton.isEnabled = userAnswer
-		audienceButton.isEnabled = userAnswer
-		callButton.isEnabled = userAnswer
 	}
 	
 	//MARK: - Button Function
@@ -269,15 +262,13 @@ class AnswerViewController: UIViewController {
 			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.rightAnswerSoundName)
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-				let mainGameVC = MainGameViewController()
-				self.navigationController?.pushViewController(mainGameVC, animated: true)
+				self.dismiss(animated: true)
 			}
 		} else {
 			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.wrongAnswerSoundName)
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-				let mainGameVC = MainGameViewController()
-				self.navigationController?.pushViewController(mainGameVC, animated: true)
+				self.dismiss(animated: true)
 			}
 		}
 		gameBrain.checkUserAnswer(userAnswer: sender.currentTitle ?? "")

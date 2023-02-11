@@ -49,7 +49,8 @@ class GameBrain {
 	private var newGameQuestion = [Question]()
 	private var userCanMakeMistake = true
 	private var mainGame = MainGameViewController()
-	
+	static let shared = GameBrain()
+
 	func createQuestionArray() {
 		if newGameQuestion.isEmpty {
 			easy.shuffle()
