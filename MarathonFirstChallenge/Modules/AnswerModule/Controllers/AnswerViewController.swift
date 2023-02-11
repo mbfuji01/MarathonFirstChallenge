@@ -16,9 +16,9 @@ class AnswerViewController: UIViewController {
 		static let questionNumberText: String = "QUESTION #1"
 		static let currentMoneyText: String = "$500"
 		static let currentQuestionText: String = "How many continents are there on planet Earth?"
-        static let takeAnswerSoundName: String = "take_answer"
-        static let rightAnswerSoundName: String = "right_answer"
-        static let wrongAnswerSoundName: String = "wrong_answer"
+		static let takeAnswerSoundName: String = "take_answer"
+		static let rightAnswerSoundName: String = "right_answer"
+		static let wrongAnswerSoundName: String = "wrong_answer"
 		static let waitingSoundName: String = "waiting"
 		static let soundExtension: String = "wav"
 		static let helpButtonImage: String = "help_50_50"
@@ -127,13 +127,13 @@ class AnswerViewController: UIViewController {
 		button.isEnabled = false
 		return button
 	}()
-
+	
 	private lazy var answerButtonStackView = UIStackView()
 	private lazy var helpButtonStackView = UIStackView()
 	private lazy var correctAnswer = ""
-    private var isTimerOut: Bool = true
-    private var isAnswerRight: Bool = true
-    private var clickedButton: UIButton = .init()
+	private var isTimerOut: Bool = true
+	private var isAnswerRight: Bool = true
+	private var clickedButton: UIButton = .init()
 	lazy var gameBrain = GameBrain.shared
 	
 	//MARK: - Lifecycle
@@ -146,14 +146,14 @@ class AnswerViewController: UIViewController {
 		gameBrain.createQuestionArray()
 		setViewModel()
 		playSound(musicName: Constants.waitingSoundName)
-    }
+	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		setHelpButtonEnabled()
 		setMistakeButtonEnabled()
 	}
-    
+	
 	private func setupViews() {
 		answerButtonStackView = UIStackView(arrangedSubviews: [
 			oneAnswerButton,
@@ -193,40 +193,40 @@ class AnswerViewController: UIViewController {
 	//MARK: - Music
 	
 	var player: AVAudioPlayer!
-    func playSound(musicName: String) {
-        let url = Bundle.main.url(forResource: musicName, withExtension: Constants.soundExtension)
+	func playSound(musicName: String) {
+		let url = Bundle.main.url(forResource: musicName, withExtension: Constants.soundExtension)
 		player = try! AVAudioPlayer(contentsOf: url!)
 		player.play()
 	}
-
+	
 	//MARK: - Timer
-
+	
 	var timeForAnswer = 31
 	var timer = Timer()
-    var timeToStop = 0
-    var timeforAnswerWaiting = 0
-
+	var timeToStop = 0
+	var timeforAnswerWaiting = 0
+	
 	@objc func startTime() {
 		timer = Timer.scheduledTimer(timeInterval: 1, target: self,   selector: (#selector(AnswerViewController.updateTimer)), userInfo: nil, repeats: true)
 	}
-
+	
 	@objc func updateTimer() {
-        
+		
 		if timeForAnswer > 0 && isTimerOut {
 			timeForAnswer -= 1
-            timeToStop = timeForAnswer
+			timeToStop = timeForAnswer
 		}else if isTimerOut == false {
 			timeForAnswer = timeToStop
-            timeforAnswerWaiting += 1
-        }else{
-            timeForAnswer = 0
-        }
-        secondsLabel.text = "\(timeForAnswer)"
-        if timeforAnswerWaiting == 5 {
-            checkForRightAnswer(clickedButton)
-            isAnswerRight = false
-        }
-
+			timeforAnswerWaiting += 1
+		}else{
+			timeForAnswer = 0
+		}
+		secondsLabel.text = "\(timeForAnswer)"
+		if timeforAnswerWaiting == 5 {
+			checkForRightAnswer(clickedButton)
+			isAnswerRight = false
+		}
+		
 		switch timeForAnswer {
 		case 15:
 			timerImageView.image = UIImage(named: Constants.timerAlertImage)
@@ -253,14 +253,22 @@ class AnswerViewController: UIViewController {
 	}
 	
 	@objc private func answerButtonTapped(_ sender: UIButton) {
-        isTimerOut = false
-        playSound(musicName: Constants.takeAnswerSoundName)
-        buttonIsEnabled(with: false)
-        clickedButton = sender
+		isTimerOut = false
+		playSound(musicName: Constants.takeAnswerSoundName)
+		buttonIsEnabled(with: false)
+		clickedButton = sender
 	}
 	
 	private func checkForRightAnswer(_ sender: UIButton){
-		if sender.currentTitle == correctAnswer {
+		if sender.currentTitle == correctAnswer && gameBrain.questionLevel == 14 || sender.currentTitle != correctAnswer && gameBrain.userCanMakeMistake && gameBrain.questionLevel == 14 {
+			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
+			playSound(musicName: Constants.rightAnswerSoundName)
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+				let resultVC = ResultViewController()
+				self.navigationController?.pushViewController(resultVC, animated: true)
+			}
+		} else if sender.currentTitle == correctAnswer {
 			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.rightAnswerSoundName)
 			
@@ -287,7 +295,7 @@ class AnswerViewController: UIViewController {
 		}
 		gameBrain.checkUserAnswer(userAnswer: sender.currentTitle ?? "")
 	}
-
+	
 	@objc private func helpButtonTapped() {
 		let (index1, index2) = gameBrain.fiftyFifty()
 		hideButton(index: index1)
@@ -341,45 +349,45 @@ class AnswerViewController: UIViewController {
 		questionNumberLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			questionNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            questionNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.questionNumberLabelTopSpacing)
+			questionNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.questionNumberLabelTopSpacing)
 		])
 		currentMoneyLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			currentMoneyLabel.centerXAnchor.constraint(equalTo: backgroundImageView.centerXAnchor),
-            currentMoneyLabel.topAnchor.constraint(equalTo: questionNumberLabel.bottomAnchor, constant: Constants.currentMoneyLabelTopSpacing)
+			currentMoneyLabel.topAnchor.constraint(equalTo: questionNumberLabel.bottomAnchor, constant: Constants.currentMoneyLabelTopSpacing)
 		])
 		timerImageView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-            timerImageView.topAnchor.constraint(equalTo: currentMoneyLabel.bottomAnchor, constant: Constants.timerImageViewTopSpacing),
+			timerImageView.topAnchor.constraint(equalTo: currentMoneyLabel.bottomAnchor, constant: Constants.timerImageViewTopSpacing),
 			timerImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timerImageView.widthAnchor.constraint(equalToConstant: Constants.timerImageViewWidth),
-            timerImageView.heightAnchor.constraint(equalToConstant: Constants.timerImageViewHeight)
+			timerImageView.widthAnchor.constraint(equalToConstant: Constants.timerImageViewWidth),
+			timerImageView.heightAnchor.constraint(equalToConstant: Constants.timerImageViewHeight)
 		])
 		secondsLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-            secondsLabel.centerXAnchor.constraint(equalTo: timerImageView.centerXAnchor, constant: Constants.secondsLabelXCenter),
+			secondsLabel.centerXAnchor.constraint(equalTo: timerImageView.centerXAnchor, constant: Constants.secondsLabelXCenter),
 			secondsLabel.centerYAnchor.constraint(equalTo: timerImageView.centerYAnchor)
 		])
 		currentQuestionLabel.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			currentQuestionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            currentQuestionLabel.topAnchor.constraint(equalTo: timerImageView.bottomAnchor, constant: Constants.currentQuestionLabelTopSpacing),
-            currentQuestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.currentQuestionLabelSideSpacing),
+			currentQuestionLabel.topAnchor.constraint(equalTo: timerImageView.bottomAnchor, constant: Constants.currentQuestionLabelTopSpacing),
+			currentQuestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.currentQuestionLabelSideSpacing),
 			currentQuestionLabel.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -Constants.currentQuestionLabelSideSpacing),
 			currentQuestionLabel.heightAnchor.constraint(equalToConstant: 150)
 		])
 		answerButtonStackView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-            answerButtonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.answerButtonStackViewSideSpacing),
+			answerButtonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.answerButtonStackViewSideSpacing),
 			answerButtonStackView.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -Constants.answerButtonStackViewSideSpacing),
 			answerButtonStackView.widthAnchor.constraint(equalToConstant: view.frame.width-Constants.answerButtonStackViewSideSpacing*2),
-            answerButtonStackView.bottomAnchor.constraint(equalTo: helpButtonStackView.topAnchor, constant: -Constants.answerButtonStackViewBottomSpacing)
+			answerButtonStackView.bottomAnchor.constraint(equalTo: helpButtonStackView.topAnchor, constant: -Constants.answerButtonStackViewBottomSpacing)
 		])
 		helpButtonStackView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			helpButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			helpButtonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            helpButtonStackView.heightAnchor.constraint(equalToConstant: Constants.helpButtonStackViewHeight)
+			helpButtonStackView.heightAnchor.constraint(equalToConstant: Constants.helpButtonStackViewHeight)
 		])
 	}
 }
