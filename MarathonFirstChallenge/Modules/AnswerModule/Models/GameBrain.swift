@@ -48,6 +48,7 @@ class GameBrain {
 	private var newGameQuestion = [Question]()
 	static let shared = GameBrain()
     var questionLevel = 0
+	var currentLevelModel = 14
 	var userCanMakeMistake = true
 	var helpButtonIsEnabled = true
 	var audienceButtonIsEnabled = true
@@ -70,8 +71,8 @@ class GameBrain {
 		helpButtonIsEnabled = true
 		helpButtonIsEnabled = true
 		mistakeButtonIsEnabled = true
-		questionLevel = 0
 		userCanMakeMistake = true
+		questionLevel = 0
 		mainGameCellState = .default
 	}
 	
@@ -161,5 +162,6 @@ class GameBrain {
 	
 	func userAnswerCorrect() {
 		questionLevel += 1
+		currentLevelModel -= 1
 	}
 }

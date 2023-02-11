@@ -135,6 +135,7 @@ class AnswerViewController: UIViewController {
 	private var isAnswerRight: Bool = true
 	private var clickedButton: UIButton = .init()
 	lazy var gameBrain = GameBrain.shared
+	lazy var levelModels = LevelsViewModel()
 	
 	//MARK: - Lifecycle
 	
@@ -156,6 +157,7 @@ class AnswerViewController: UIViewController {
 	}
 	
 	private func setupViews() {
+		currentMoneyLabel.text = "$\(levelModels.levelModels[gameBrain.currentLevelModel].winAmount)"
 		answerButtonStackView = UIStackView(arrangedSubviews: [
 			oneAnswerButton,
 			twoAnswerButton,

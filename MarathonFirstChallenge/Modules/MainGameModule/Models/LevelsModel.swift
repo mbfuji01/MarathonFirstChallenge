@@ -22,7 +22,7 @@ class LevelsViewModel {
 		static let redButton = "answer_button_red"
 	}
 	
-	private var levelModels = [
+	var levelModels = [
         LevelsModel(numberOfQuestion: 15, winAmount: 1_000_000, image: Constants.yellowButton),
         LevelsModel(numberOfQuestion: 14, winAmount: 500_000, image: Constants.darkButton),
         LevelsModel(numberOfQuestion: 13, winAmount: 250_000, image: Constants.darkButton),
