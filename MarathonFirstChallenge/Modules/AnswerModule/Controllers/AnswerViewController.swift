@@ -237,7 +237,7 @@ class AnswerViewController: UIViewController {
         secondsLabel.text = "\(timeForAnswer)"
         if timeforAnswerWaiting == 5 {
             checkForRightAnswer(clickedButton)
-            isAnswerRight = false;
+            isAnswerRight = false
         }
 
 		switch timeForAnswer {
@@ -289,7 +289,6 @@ class AnswerViewController: UIViewController {
             } else {
                 sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
                 playSound(musicName: Constants.wrongAnswerSoundName)
-            
             }
     }
 
