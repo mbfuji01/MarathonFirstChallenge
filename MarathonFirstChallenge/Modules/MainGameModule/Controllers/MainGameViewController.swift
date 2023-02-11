@@ -54,6 +54,7 @@ class MainGameViewController: UIViewController {
     
     private lazy var tableView = UITableView()
     private lazy var actualViewModel: [LevelsModel] = []
+    private lazy var gameBrain = GameBrain.shared
    
     //MARK: - Lifecycle
     
@@ -63,7 +64,7 @@ class MainGameViewController: UIViewController {
         setupTableViewDelegates()
         setupViews()
         setConstraints()
-		createViewModel()
+        createViewModel(for: LevelsViewModel().getLevelModels().count - gameBrain.questionLevel, viewState: gameBrain.mainGameCellState)
         tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
     
         self.navigationController?.isNavigationBarHidden =  false
@@ -93,20 +94,22 @@ class MainGameViewController: UIViewController {
 		tableView.delegate = self
 	}
 	
-    private func createViewModel() {
-        let levelModels = LevelsViewModel().getLevelModels()
-        actualViewModel = levelModels
-    }
+//    private func createViewModel() {
+//        let levelModels = LevelsViewModel().getLevelModels()
+//        actualViewModel = levelModels
+//    }
     
-	func updateViewModel(for index: Int, correctAnswer: Bool) {
+	func createViewModel(for index: Int, viewState: State) {
         var levelModels = LevelsViewModel().getLevelModels()
         
-		switch correctAnswer {
-		case true:
-			levelModels[index].image = Constants.greenButton
-		case false:
-			levelModels[index].image = Constants.redButton
-		}
+        switch viewState {
+        case .correct:
+            levelModels[index].image = Constants.greenButton
+        case .wrong:
+            levelModels[index].image = Constants.redButton
+        case .default: break
+            
+        }
         actualViewModel = levelModels
 		tableView.reloadData()
 	}

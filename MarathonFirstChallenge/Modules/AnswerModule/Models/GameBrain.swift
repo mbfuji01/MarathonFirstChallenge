@@ -45,12 +45,13 @@ class GameBrain {
 				 answers: ["Только Dictionary", "Нет", "Да", "Только Array"], correctAnswer: "Да")
 	]
 	
-	private var questionLevel = 0
+    var questionLevel = 0
 	private var newGameQuestion = [Question]()
 	var userCanMakeMistake = true
 	private var mainGame = MainGameViewController()
 	static let shared = GameBrain()
 	var helpButtonIsEnabled = true
+    var mainGameCellState: State = .default
 
 	func createQuestionArray() {
 		if newGameQuestion.isEmpty {
@@ -81,14 +82,14 @@ class GameBrain {
 	
 	func checkUserAnswer(userAnswer: String) {
 		if userAnswer == newGameQuestion[questionLevel].correctAnswer {
-			mainGame.updateViewModel(for: questionLevel, correctAnswer: true)
+            mainGameCellState = .correct
 			userAnswerCorrect()
 		} else if userAnswer != newGameQuestion[questionLevel].correctAnswer && userCanMakeMistake {
-			mainGame.updateViewModel(for: questionLevel, correctAnswer: false)
+            mainGameCellState = .wrong
 			userAnswerCorrect()
 			userCanMakeMistake = false
 		} else {
-			mainGame.updateViewModel(for: questionLevel, correctAnswer: false)
+            mainGameCellState = .wrong
 		}
 	}
 	

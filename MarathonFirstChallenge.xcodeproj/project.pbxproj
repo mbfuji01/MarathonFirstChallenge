@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		030D2D78299169E700254BD7 /* LevelsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D2D77299169E700254BD7 /* LevelsModel.swift */; };
 		030D2D7A29916D5C00254BD7 /* MainGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */; };
+		039E2C632998014900FB2159 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E2C622998014900FB2159 /* State.swift */; };
 		181298C52996A02900A39E64 /* QuestionBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181298C42996A02900A39E64 /* QuestionBrain.swift */; };
 		181298C72996A0B900A39E64 /* GameBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181298C62996A0B900A39E64 /* GameBrain.swift */; };
 		182D35362991509300D7126A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182D35352991509300D7126A /* SplashViewController.swift */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		030D2D77299169E700254BD7 /* LevelsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsModel.swift; sourceTree = "<group>"; };
 		030D2D7929916D5C00254BD7 /* MainGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameTableViewCell.swift; sourceTree = "<group>"; };
+		039E2C622998014900FB2159 /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		181298C42996A02900A39E64 /* QuestionBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionBrain.swift; sourceTree = "<group>"; };
 		181298C62996A0B900A39E64 /* GameBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBrain.swift; sourceTree = "<group>"; };
 		182D35352991509300D7126A /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				185067BA298FFA140046BC7F /* Controllers */,
 				185067B9298FFA140046BC7F /* Models */,
 				185067BB298FFA140046BC7F /* Views */,
+				039E2C622998014900FB2159 /* State.swift */,
 			);
 			path = MainGameModule;
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				030D2D7A29916D5C00254BD7 /* MainGameTableViewCell.swift in Sources */,
 				181298C72996A0B900A39E64 /* GameBrain.swift in Sources */,
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
+				039E2C632998014900FB2159 /* State.swift in Sources */,
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
 				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,
