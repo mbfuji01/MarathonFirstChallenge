@@ -120,18 +120,17 @@ class AnswerViewController: UIViewController {
 		button.addTarget(self, action: #selector(audienceButtonTapped), for: .touchUpInside)
 		return button
 	}()
-	private lazy var callButton: UIButton = {
+	private lazy var mistakeButton: UIButton = {
 		let button = UIButton (type: .system)
 		button.setBackgroundImage(UIImage(named: Constants.callButtonImage), for: .normal)
 		button.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
+		button.isEnabled = false
 		return button
 	}()
 
 	private lazy var answerButtonStackView = UIStackView()
 	private lazy var helpButtonStackView = UIStackView()
 	private lazy var correctAnswer = ""
-	private var leftBarButtonItem : UIBarButtonItem!
-	private var navigationLeftButton : UIButton!
     private var isTimerOut: Bool = true
     private var isAnswerRight: Bool = true
     private var clickedButton: UIButton = .init()
@@ -146,15 +145,13 @@ class AnswerViewController: UIViewController {
 		startTime()
 		gameBrain.createQuestionArray()
 		setViewModel()
-        playSound(musicName: Constants.waitingSoundName)
-       
-        let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(dismissSelf))
-                backButton.tintColor = UIColor.white
-                self.navigationItem.leftBarButtonItem = backButton
+		playSound(musicName: Constants.waitingSoundName)
     }
+	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		setHelpButtonEnabled()
+		setMistakeButtonEnabled()
 	}
     
 	private func setupViews() {
@@ -168,7 +165,7 @@ class AnswerViewController: UIViewController {
 		helpButtonStackView = UIStackView(arrangedSubviews: [
 			helpButton,
 			audienceButton,
-			callButton
+			mistakeButton
 		], axis: .horizontal, spacing: 20)
 		view.addSubview(backgroundImageView)
 		view.addSubview(questionNumberLabel)
@@ -178,6 +175,7 @@ class AnswerViewController: UIViewController {
 		view.addSubview(currentQuestionLabel)
 		view.addSubview(answerButtonStackView)
 		view.addSubview(helpButtonStackView)
+		navigationController?.isNavigationBarHidden = true
 	}
 	
 	private func setViewModel() {
@@ -266,7 +264,7 @@ class AnswerViewController: UIViewController {
 			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.rightAnswerSoundName)
 			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 				let mainGameVC = MainGameViewController()
 				self.navigationController?.pushViewController(mainGameVC, animated: true)
 			}
@@ -274,7 +272,7 @@ class AnswerViewController: UIViewController {
 			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.wrongAnswerSoundName)
 			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 				let mainGameVC = MainGameViewController()
 				self.navigationController?.pushViewController(mainGameVC, animated: true)
 			}
@@ -282,7 +280,7 @@ class AnswerViewController: UIViewController {
 			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.wrongAnswerSoundName)
 			
-			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+			DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 				let resultVC = ResultViewController()
 				self.navigationController?.pushViewController(resultVC, animated: true)
 			}
@@ -304,6 +302,13 @@ class AnswerViewController: UIViewController {
 		} else {
 			helpButton.isEnabled = gameBrain.helpButtonIsEnabled
 			helpButton.alpha = 0.5
+		}
+	}
+	func setMistakeButtonEnabled() {
+		if gameBrain.mistakeButtonIsEnabled {
+			mistakeButton.alpha = 1
+		} else {
+			mistakeButton.alpha = 0.5
 		}
 	}
 	

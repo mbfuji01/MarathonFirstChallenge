@@ -44,13 +44,13 @@ class GameBrain {
 		Question(question: "Являются ли Swift Array универсальными?",
 				 answers: ["Только Dictionary", "Нет", "Да", "Только Array"], correctAnswer: "Да")
 	]
-	
-    var questionLevel = 0
-	private var newGameQuestion = [Question]()
-	var userCanMakeMistake = true
 	private var mainGame = MainGameViewController()
+	private var newGameQuestion = [Question]()
 	static let shared = GameBrain()
+    var questionLevel = 0
+	var userCanMakeMistake = true
 	var helpButtonIsEnabled = true
+	var mistakeButtonIsEnabled = true
     var mainGameCellState: State = .default
 
 	func createQuestionArray() {
@@ -64,8 +64,13 @@ class GameBrain {
 		}
 	}
 	
-	func resetQuestionArray() {
+	func resetGame() {
 		newGameQuestion.removeAll()
+		helpButtonIsEnabled = true
+		mistakeButtonIsEnabled = true
+		questionLevel = 0
+		userCanMakeMistake = true
+		mainGameCellState = .default
 	}
 	
 	func getQuestionData() -> [String] {
@@ -87,6 +92,7 @@ class GameBrain {
 		} else if userAnswer != newGameQuestion[questionLevel].correctAnswer && userCanMakeMistake {
             mainGameCellState = .wrong
 			userAnswerCorrect()
+			mistakeButtonIsEnabled = false
 			userCanMakeMistake = false
 		} else {
             mainGameCellState = .wrong

@@ -66,12 +66,7 @@ class MainGameViewController: UIViewController {
         setConstraints()
         createViewModel(for: LevelsViewModel().getLevelModels().count - gameBrain.questionLevel, viewState: gameBrain.mainGameCellState)
         tableView.register(MainGameTableViewCell.self, forCellReuseIdentifier: Constants.levelCell)
-    
-        self.navigationController?.isNavigationBarHidden =  false
-        
-        let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(backViewAction))
-            backButton.tintColor = UIColor.white
-            self.navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.isNavigationBarHidden = true
     }
 	
 	override func viewWillAppear(_ animated: Bool) {
@@ -93,11 +88,6 @@ class MainGameViewController: UIViewController {
 		tableView.dataSource = self
 		tableView.delegate = self
 	}
-	
-//    private func createViewModel() {
-//        let levelModels = LevelsViewModel().getLevelModels()
-//        actualViewModel = levelModels
-//    }
     
 	func createViewModel(for index: Int, viewState: State) {
         var levelModels = LevelsViewModel().getLevelModels()
@@ -121,9 +111,6 @@ class MainGameViewController: UIViewController {
     }
     
 	@objc private func routeToAnswer() {
-		//        let answerVC = AnswerViewController()
-		//		answerVC.modalPresentationStyle = .fullScreen
-		//		present(answerVC, animated: true)
 		let answerVC = AnswerViewController()
 		self.navigationController?.pushViewController(answerVC, animated: true)
 	}
@@ -151,7 +138,7 @@ class MainGameViewController: UIViewController {
         ])
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+			backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

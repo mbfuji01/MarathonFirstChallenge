@@ -110,6 +110,7 @@ class WelcomeViewController: UIViewController {
      
     private lazy var scoreStackView = UIStackView()
     private lazy var generalInformationStackView = UIStackView()
+	let defaults = UserDefaults.standard
     
 	//MARK: - Lifecycle
 	
@@ -117,10 +118,11 @@ class WelcomeViewController: UIViewController {
 		super.viewDidLoad()
 		setupViews()
 		setConstraints()
-        //self.navigationController?.isNavigationBarHidden =  true
 	}
     
     private func setupViews() {
+		let bestScore = defaults.string(forKey: "bestScore")
+		selfBestScoreLabel.text = bestScore
 		generalInformationStackView = UIStackView(arrangedSubviews: [
 			gameNameLabel,
 			bestScoreLabel
@@ -138,6 +140,7 @@ class WelcomeViewController: UIViewController {
         view.addSubview(scoreStackView)
         view.addSubview(newGameButton)
         view.addSubview(teamButton)
+		navigationController?.isNavigationBarHidden = true
     }
 	
 	//MARK: - Button function

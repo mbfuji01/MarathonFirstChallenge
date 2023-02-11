@@ -13,7 +13,7 @@ class ResultViewController: UIViewController {
 		static let backgroundImage: String = "background_image"
 		static let logoImage: String = "logo_image"
 		static let gameOverText: String = "Game Over"
-		static let scoreText: String = "All-time Best Score"
+		static let scoreText: String = "Level 1"
 		static let coinImage: String = "coin_image"
 		static let selfBestScore: String = "$0"
 		static let newGameButtonImage: String = "title_yellow_button"
@@ -111,6 +111,8 @@ class ResultViewController: UIViewController {
 	 
 	private lazy var scoreStackView = UIStackView()
 	private lazy var generalInformationStackView = UIStackView()
+	private lazy var gameBrain = GameBrain.shared
+	let defaults = UserDefaults.standard
     
 	//MARK: - Lifecycle
 	
@@ -138,16 +140,35 @@ class ResultViewController: UIViewController {
 		view.addSubview(newGameButton)
 		view.addSubview(mainScreenButton)
 		view.addSubview(teamButton)
+
+		navigationController?.isNavigationBarHidden = true
+		bestScoreLabel.text = "Level \(gameBrain.questionLevel)"
+		let bestScore = defaults.string(forKey: "bestScore")
+		switch gameBrain.questionLevel {
+		case 4...8:
+			selfBestScoreLabel.text = "$5,000"
+		case 9...13:
+			selfBestScoreLabel.text = "$25,000"
+		case 14:
+			selfBestScoreLabel.text = "$1,000,000"
+		default:
+			selfBestScoreLabel.text = "$0"
+		}
+		if bestScore?.count ?? 0 < selfBestScoreLabel.text?.count ?? 0 {
+			defaults.set(selfBestScoreLabel.text, forKey: "bestScore")
+		}
 	}
 	
 	//MARK: - Button function
     
 	@objc private func newGameButtonTapped() {
+		gameBrain.resetGame()
 		let mainGameVC = MainGameViewController()
 		self.navigationController?.pushViewController(mainGameVC, animated: true)
 	}
 	
 	@objc private func mainScreenButtonTapped() {
+		gameBrain.resetGame()
 		let welcomeVC = WelcomeViewController()
 		self.navigationController?.pushViewController(welcomeVC, animated: true)
 	}

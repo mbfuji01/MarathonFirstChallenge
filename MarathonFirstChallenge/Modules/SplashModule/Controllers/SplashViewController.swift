@@ -36,7 +36,7 @@ class SplashViewController: UIViewController {
 		setupViews()
 		setConstraints()
 		setTimer()
-        navigationController?.isNavigationBarHidden =  true
+        navigationController?.isNavigationBarHidden = true
 	}
     
 	private func setupViews() {
