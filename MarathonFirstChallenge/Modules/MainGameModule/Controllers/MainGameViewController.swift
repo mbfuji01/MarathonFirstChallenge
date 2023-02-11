@@ -23,10 +23,10 @@ class MainGameViewController: UIViewController {
         static let tableViewSideSpacing: CGFloat = 32.0
         static let tableViewBottomSpacing: CGFloat = -20.0
         static let tableViewRowHeight: CGFloat = 42.0
-        static let logoViewTopSpacing: CGFloat = 10.0
         static let logoViewHeight: CGFloat = 85.0
         static let logoViewWidth: CGFloat = 85.0
-		static let continueLabelBottomSpacing: CGFloat = 15
+		static let continueLabelBottomSpacing: CGFloat = 0.0
+		static let logoImageViewTopSpacing: CGFloat = 76.0
     }
     
     //MARK: - Create UI
@@ -54,8 +54,6 @@ class MainGameViewController: UIViewController {
     
     private lazy var tableView = UITableView()
     private lazy var actualViewModel: [LevelsModel] = []
-    private lazy var gameBrain = GameBrain()
-    
    
     //MARK: - Lifecycle
     
@@ -74,14 +72,15 @@ class MainGameViewController: UIViewController {
             backButton.tintColor = UIColor.white
             self.navigationItem.leftBarButtonItem = backButton
     }
-    @objc private func backViewAction() {
-        navigationController?.popViewController(animated: true)
-        navigationController?.isNavigationBarHidden =  true
-    }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		continueLabel.blink()
+	}
+	
     private func setupViews() {
         tableView.backgroundColor = UIColor.clear
         tableView.rowHeight = Constants.tableViewRowHeight
-		continueLabel.blink()
 		
 		view.addSubview(backgroundImageView)
 		view.addSubview(tableView)
@@ -99,18 +98,17 @@ class MainGameViewController: UIViewController {
         actualViewModel = levelModels
     }
     
-	private func updateViewModel(for index: Int, correctAnswer: Bool) {
+	func updateViewModel(for index: Int, correctAnswer: Bool) {
         var levelModels = LevelsViewModel().getLevelModels()
         
-        var currentModel = levelModels[index]
 		switch correctAnswer {
 		case true:
-            currentModel.image = Constants.greenButton
+			levelModels[index].image = Constants.greenButton
 		case false:
-			currentModel.image = Constants.redButton
+			levelModels[index].image = Constants.redButton
 		}
-		levelModels[index] = currentModel
         actualViewModel = levelModels
+		tableView.reloadData()
 	}
     
     private func addTaps() {
@@ -122,7 +120,6 @@ class MainGameViewController: UIViewController {
     @objc private func routeToAnswer() {
         let answerVC = AnswerViewController()
         self.navigationController?.pushViewController(answerVC, animated: true)
-        
     }
     
 	//MARK: - Button function
@@ -131,12 +128,17 @@ class MainGameViewController: UIViewController {
 		dismiss(animated: true)
 	}
 	
+	@objc private func backViewAction() {
+		navigationController?.popViewController(animated: true)
+		navigationController?.isNavigationBarHidden =  true
+	}
+	
 	//MARK: - setConstraints
     
     private func setConstraints() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-			logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.logoViewTopSpacing),
+			logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.logoImageViewTopSpacing),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.widthAnchor.constraint(equalToConstant: Constants.logoViewWidth),
             logoImageView.heightAnchor.constraint(equalToConstant: Constants.logoViewHeight),
@@ -151,7 +153,7 @@ class MainGameViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.tableViewTopSpacing),
-            tableView.bottomAnchor.constraint(equalTo: continueLabel.topAnchor, constant: Constants.tableViewBottomSpacing),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.tableViewBottomSpacing),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.tableViewSideSpacing),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.tableViewSideSpacing)
         ])

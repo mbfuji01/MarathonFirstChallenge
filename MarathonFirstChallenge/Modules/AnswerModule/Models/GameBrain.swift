@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameBrain {
+class GameBrain {
 	var easy = [
 		Question(question: "Какой тип хранит только положительные целые числа?",
 				 answers: ["UInt", "Int", "Double", "Float"], correctAnswer: "UInt"),
@@ -45,22 +45,23 @@ struct GameBrain {
 				 answers: ["Только Dictionary", "Нет", "Да", "Только Array"], correctAnswer: "Да")
 	]
 	
-	var questionLevel = 0
-	var newGameQuestion = [Question]()
-	var userCanMakeMistake = true
+	private var questionLevel = 0
+	private var newGameQuestion = [Question]()
+	private var userCanMakeMistake = true
+	private var mainGame = MainGameViewController()
 	
-	mutating func createQuestionArray() {
-        if newGameQuestion.isEmpty {
-            easy.shuffle()
-            normal.shuffle()
-            hard.shuffle()
-            newGameQuestion.append(contentsOf: easy)
-            newGameQuestion.append(contentsOf: normal)
-            newGameQuestion.append(contentsOf: hard)
-        }
+	func createQuestionArray() {
+		if newGameQuestion.isEmpty {
+			easy.shuffle()
+			normal.shuffle()
+			hard.shuffle()
+			newGameQuestion.append(contentsOf: easy)
+			newGameQuestion.append(contentsOf: normal)
+			newGameQuestion.append(contentsOf: hard)
+		}
 	}
 	
-	mutating func resetQuestionArray() {
+	func resetQuestionArray() {
 		newGameQuestion.removeAll()
 	}
 	
@@ -76,16 +77,35 @@ struct GameBrain {
 		]
 	}
 	
-	mutating func checkUserAnswer(userAnswer: String) {
+	func checkUserAnswer(userAnswer: String) {
 		if userAnswer == newGameQuestion[questionLevel].correctAnswer {
+			mainGame.updateViewModel(for: questionLevel, correctAnswer: true)
 			questionLevel += 1
 		} else if userCanMakeMistake {
+			mainGame.updateViewModel(for: questionLevel, correctAnswer: false)
 			questionLevel += 1
 			userCanMakeMistake = false
+		} else {
+			mainGame.updateViewModel(for: questionLevel, correctAnswer: false)
 		}
 	}
 	
-	mutating func userAnswerCorrect() {
+	func fiftyFifty() -> (index1: Int, index2: Int) {
+		let correctIndex = getIndexOfCurrentAnswer()
+		let index1 = 0 == correctIndex ? 1 : 0
+		let index2 = 2 == correctIndex ? 3 : 2
+		return (index1, index2)
+	}
+	
+	private func getIndexOfCurrentAnswer() -> Int {
+		let correctAnswer = newGameQuestion[questionLevel].correctAnswer
+		guard let currentAnswer = newGameQuestion[questionLevel].answers.firstIndex(of: correctAnswer) else {
+			return 0
+		}
+		return currentAnswer
+	}
+	
+	func userAnswerCorrect() {
 		questionLevel += 1
 	}
 }

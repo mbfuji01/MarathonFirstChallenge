@@ -35,8 +35,9 @@ class AnswerViewController: UIViewController {
 		static let timerImageViewWidth: CGFloat = 93.0
 		static let timerImageViewHeight: CGFloat = 47.0
 		static let secondsLabelXCenter: CGFloat = 17.0
-		static let currentQuestionLabelTopSpacing: CGFloat = 24.0
+		static let currentQuestionLabelTopSpacing: CGFloat = 20.0
 		static let currentQuestionLabelSideSpacing: CGFloat = 30.0
+		static let currentQuestionLabelBottomSpacing: CGFloat = 20.0
 		static let answerButtonStackViewSideSpacing: CGFloat = 30.0
 		static let answerButtonStackViewBottomSpacing: CGFloat = 40.0
 		static let helpButtonStackViewHeight: CGFloat = 64.0
@@ -81,6 +82,8 @@ class AnswerViewController: UIViewController {
 		text.font = UIFont.systemFont(ofSize: Constants.currentQuestionFontSize, weight: .semibold)
 		text.numberOfLines = 0
 		text.textAlignment = .center
+		text.minimumScaleFactor = 0.5
+		text.adjustsFontSizeToFitWidth = true
 		return text
 	}()
 	
@@ -123,23 +126,16 @@ class AnswerViewController: UIViewController {
 		button.addTarget(self, action: #selector(callButtonTapped), for: .touchUpInside)
 		return button
 	}()
-    
-//    private lazy var backButton: UIBarButtonItem = {
-//    let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(dismissSelf))
-//        backButton.tintColor = UIColor.white
-//        self.navigationItem.leftBarButtonItem = backButton
-//        return backButton
-//    }()
-	
+
 	private lazy var answerButtonStackView = UIStackView()
 	private lazy var helpButtonStackView = UIStackView()
 	private lazy var correctAnswer = ""
-	var gameBrain = GameBrain()
 	private var leftBarButtonItem : UIBarButtonItem!
 	private var navigationLeftButton : UIButton!
     private var isTimerOut: Bool = true
     private var isAnswerRight: Bool = true
     private var clickedButton: UIButton = .init()
+	lazy var gameBrain = GameBrain()
 	
 	//MARK: - Lifecycle
 	
@@ -148,8 +144,9 @@ class AnswerViewController: UIViewController {
 		setupViews()
 		setConstraints()
 		startTime()
-        playSound(musicName: Constants.waitingSoundName)
 		gameBrain.createQuestionArray()
+		setViewModel()
+        playSound(musicName: Constants.waitingSoundName)
        
         let backButton = UIBarButtonItem(image: UIImage(named: "arrow"), style: .plain, target: self, action: #selector(dismissSelf))
                 backButton.tintColor = UIColor.white
@@ -158,15 +155,7 @@ class AnswerViewController: UIViewController {
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		setViewModel()
-        
 	}
-    
-    @objc private func dismissSelf() {
-        navigationController?.popViewController(animated: true)
-        player.stop()
-        
-    }
     
 	private func setupViews() {
 		answerButtonStackView = UIStackView(arrangedSubviews: [
@@ -199,7 +188,7 @@ class AnswerViewController: UIViewController {
 		threeAnswerButton.text = data[3]
 		fourAnswerButton.text = data[4]
 		correctAnswer = data[5]
-		questionNumberLabel.text = data[6]
+		questionNumberLabel.text = "QUESTION #\(data[6])"
 		buttonIsEnabled(with: true)
 	}
 	
@@ -228,7 +217,7 @@ class AnswerViewController: UIViewController {
 		if timeForAnswer > 0 && isTimerOut {
 			timeForAnswer -= 1
             timeToStop = timeForAnswer
-		}else if (isTimerOut == false){
+		}else if isTimerOut == false {
 			timeForAnswer = timeToStop
             timeforAnswerWaiting += 1
         }else{
@@ -251,18 +240,6 @@ class AnswerViewController: UIViewController {
 		}
 	}
 	
-	//MARK: - GameBrain func
-
-//	private func goToKuda() {
-//		if userAnswer == true {
-//			goToMainScreen
-//		} else if userAnswer == false && badOshibka == true {
-//			goToMainScreen
-//		} else {
-//			goToResult()
-//		}
-//	}
-	
 	private func buttonIsEnabled(with userAnswer: Bool) {
 		oneAnswerButton.isEnabled = userAnswer
 		twoAnswerButton.isEnabled = userAnswer
@@ -273,8 +250,12 @@ class AnswerViewController: UIViewController {
 		callButton.isEnabled = userAnswer
 	}
 	
-	
 	//MARK: - Button Function
+	
+	@objc private func dismissSelf() {
+		navigationController?.popViewController(animated: true)
+		player.stop()
+	}
 	
 	@objc private func answerButtonTapped(_ sender: UIButton) {
         isTimerOut = false
@@ -282,18 +263,45 @@ class AnswerViewController: UIViewController {
         buttonIsEnabled(with: false)
         clickedButton = sender
 	}
-    private func checkForRightAnswer(_ sender: UIButton){
-            if sender.currentTitle == correctAnswer {
-                sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
-                playSound(musicName: Constants.rightAnswerSoundName)
-            } else {
-                sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
-                playSound(musicName: Constants.wrongAnswerSoundName)
-            }
-    }
+	
+	private func checkForRightAnswer(_ sender: UIButton){
+		if sender.currentTitle == correctAnswer {
+			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
+			playSound(musicName: Constants.rightAnswerSoundName)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+				let mainGameVC = MainGameViewController()
+				self.navigationController?.pushViewController(mainGameVC, animated: true)
+			}
+		} else {
+			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
+			playSound(musicName: Constants.wrongAnswerSoundName)
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+				let mainGameVC = MainGameViewController()
+				self.navigationController?.pushViewController(mainGameVC, animated: true)
+			}
+		}
+		gameBrain.checkUserAnswer(userAnswer: sender.currentTitle ?? "")
+	}
 
 	@objc private func helpButtonTapped() {
-		print("helpButtonTapped")
+		let (index1, index2) = gameBrain.fiftyFifty()
+		hideButton(index: index1)
+		hideButton(index: index2)
+		helpButton.isEnabled = false
+		helpButton.alpha = 0.3
+	}
+	
+	private func hideButton(index: Int) {
+		switch index {
+		case 0:
+			oneAnswerButton.isEnabled = false
+		case 1:
+			twoAnswerButton.isEnabled = false
+		case 2:
+			threeAnswerButton.isEnabled = false
+		default:
+			fourAnswerButton.isEnabled = false
+		}
 	}
 	
 	@objc private func audienceButtonTapped() {
@@ -336,7 +344,8 @@ class AnswerViewController: UIViewController {
 			currentQuestionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             currentQuestionLabel.topAnchor.constraint(equalTo: timerImageView.bottomAnchor, constant: Constants.currentQuestionLabelTopSpacing),
             currentQuestionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.currentQuestionLabelSideSpacing),
-			currentQuestionLabel.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -Constants.currentQuestionLabelSideSpacing)
+			currentQuestionLabel.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: -Constants.currentQuestionLabelSideSpacing),
+			currentQuestionLabel.heightAnchor.constraint(equalToConstant: 150)
 		])
 		answerButtonStackView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
