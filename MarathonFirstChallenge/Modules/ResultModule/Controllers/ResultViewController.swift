@@ -145,12 +145,15 @@ class ResultViewController: UIViewController {
 		bestScoreLabel.text = "Level \(gameBrain.questionLevel)"
 		let bestScore = defaults.string(forKey: "bestScore")
 		switch gameBrain.questionLevel {
-		case 4...8:
+		case 5...9:
 			selfBestScoreLabel.text = "$5,000"
-		case 9...13:
+			gameOverLabel.text = "You won"
+		case 10...14:
 			selfBestScoreLabel.text = "$25,000"
-		case 14:
+			gameOverLabel.text = "You won"
+		case 15:
 			selfBestScoreLabel.text = "$1,000,000"
+			gameOverLabel.text = "You won"
 		default:
 			selfBestScoreLabel.text = "$0"
 		}
