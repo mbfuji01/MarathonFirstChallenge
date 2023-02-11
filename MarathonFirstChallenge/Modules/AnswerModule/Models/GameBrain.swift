@@ -47,9 +47,10 @@ class GameBrain {
 	
 	private var questionLevel = 0
 	private var newGameQuestion = [Question]()
-	private var userCanMakeMistake = true
+	var userCanMakeMistake = true
 	private var mainGame = MainGameViewController()
 	static let shared = GameBrain()
+	var helpButtonIsEnabled = true
 
 	func createQuestionArray() {
 		if newGameQuestion.isEmpty {
@@ -81,10 +82,10 @@ class GameBrain {
 	func checkUserAnswer(userAnswer: String) {
 		if userAnswer == newGameQuestion[questionLevel].correctAnswer {
 			mainGame.updateViewModel(for: questionLevel, correctAnswer: true)
-			questionLevel += 1
-		} else if userCanMakeMistake {
+			userAnswerCorrect()
+		} else if userAnswer != newGameQuestion[questionLevel].correctAnswer && userCanMakeMistake {
 			mainGame.updateViewModel(for: questionLevel, correctAnswer: false)
-			questionLevel += 1
+			userAnswerCorrect()
 			userCanMakeMistake = false
 		} else {
 			mainGame.updateViewModel(for: questionLevel, correctAnswer: false)

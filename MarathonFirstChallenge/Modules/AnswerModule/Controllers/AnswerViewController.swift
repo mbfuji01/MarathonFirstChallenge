@@ -108,7 +108,7 @@ class AnswerViewController: UIViewController {
 		return button
 	}()
 	
-	private var helpButton: UIButton = {
+	private lazy var helpButton: UIButton = {
 		let button = UIButton (type: .system)
 		button.setBackgroundImage(UIImage(named: Constants.helpButtonImage), for: .normal)
 		button.addTarget(self, action: #selector(helpButtonTapped), for: .touchUpInside)
@@ -152,6 +152,10 @@ class AnswerViewController: UIViewController {
                 backButton.tintColor = UIColor.white
                 self.navigationItem.leftBarButtonItem = backButton
     }
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setHelpButtonEnabled()
+	}
     
 	private func setupViews() {
 		answerButtonStackView = UIStackView(arrangedSubviews: [
@@ -261,14 +265,26 @@ class AnswerViewController: UIViewController {
 		if sender.currentTitle == correctAnswer {
 			sender.setBackgroundImage(UIImage(named: Constants.correctButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.rightAnswerSoundName)
+			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-				self.dismiss(animated: true)
+				let mainGameVC = MainGameViewController()
+				self.navigationController?.pushViewController(mainGameVC, animated: true)
+			}
+		} else if sender.currentTitle != correctAnswer && gameBrain.userCanMakeMistake {
+			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
+			playSound(musicName: Constants.wrongAnswerSoundName)
+			
+			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+				let mainGameVC = MainGameViewController()
+				self.navigationController?.pushViewController(mainGameVC, animated: true)
 			}
 		} else {
 			sender.setBackgroundImage(UIImage(named: Constants.inCorrectButtonBackgroundImage), for: .normal)
 			playSound(musicName: Constants.wrongAnswerSoundName)
+			
 			DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-				self.dismiss(animated: true)
+				let resultVC = ResultViewController()
+				self.navigationController?.pushViewController(resultVC, animated: true)
 			}
 		}
 		gameBrain.checkUserAnswer(userAnswer: sender.currentTitle ?? "")
@@ -278,8 +294,17 @@ class AnswerViewController: UIViewController {
 		let (index1, index2) = gameBrain.fiftyFifty()
 		hideButton(index: index1)
 		hideButton(index: index2)
-		helpButton.isEnabled = false
-		helpButton.alpha = 0.3
+		gameBrain.helpButtonIsEnabled = false
+		setHelpButtonEnabled()
+	}
+	func setHelpButtonEnabled() {
+		if gameBrain.helpButtonIsEnabled {
+			helpButton.isEnabled = gameBrain.helpButtonIsEnabled
+			helpButton.alpha = 1
+		} else {
+			helpButton.isEnabled = gameBrain.helpButtonIsEnabled
+			helpButton.alpha = 0.5
+		}
 	}
 	
 	private func hideButton(index: Int) {

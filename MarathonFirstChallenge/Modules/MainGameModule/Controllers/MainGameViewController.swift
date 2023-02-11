@@ -117,11 +117,13 @@ class MainGameViewController: UIViewController {
         view.addGestureRecognizer(tapScreen)
     }
     
-    @objc private func routeToAnswer() {
-        let answerVC = AnswerViewController()
-		answerVC.modalPresentationStyle = .fullScreen
-		present(answerVC, animated: true)
-    }
+	@objc private func routeToAnswer() {
+		//        let answerVC = AnswerViewController()
+		//		answerVC.modalPresentationStyle = .fullScreen
+		//		present(answerVC, animated: true)
+		let answerVC = AnswerViewController()
+		self.navigationController?.pushViewController(answerVC, animated: true)
+	}
     
 	//MARK: - Button function
 	
