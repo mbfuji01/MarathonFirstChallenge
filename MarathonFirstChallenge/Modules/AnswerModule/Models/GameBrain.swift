@@ -50,6 +50,7 @@ class GameBrain {
     var questionLevel = 0
 	var userCanMakeMistake = true
 	var helpButtonIsEnabled = true
+	var audienceButtonIsEnabled = true
 	var mistakeButtonIsEnabled = true
     var mainGameCellState: State = .default
 
@@ -66,6 +67,7 @@ class GameBrain {
 	
 	func resetGame() {
 		newGameQuestion.removeAll()
+		helpButtonIsEnabled = true
 		helpButtonIsEnabled = true
 		mistakeButtonIsEnabled = true
 		questionLevel = 0
@@ -104,6 +106,49 @@ class GameBrain {
 		let index1 = 0 == correctIndex ? 1 : 0
 		let index2 = 2 == correctIndex ? 3 : 2
 		return (index1, index2)
+	}
+	
+	func getCorrectAnswer() -> String {
+		switch getIndexOfCurrentAnswer() {
+		case 0: return newGameQuestion[questionLevel].answers[0]
+		case 1: return newGameQuestion[questionLevel].answers[1]
+		case 2: return newGameQuestion[questionLevel].answers[2]
+		default: return newGameQuestion[questionLevel].answers[3]
+		}
+	}
+	
+	func getHelpWithUserAnswer() -> String {
+		let answers = [newGameQuestion[questionLevel].answers[0],
+					   newGameQuestion[questionLevel].answers[1],
+					   newGameQuestion[questionLevel].answers[2],
+					   newGameQuestion[questionLevel].answers[3]]
+		let randomNumber = Int.random(in: 0..<4)
+		return String(getIndexOfBadAnswer(badAnswer: newGameQuestion[questionLevel].answers[randomNumber]))
+	}
+
+	func getEasyAnswer() -> String {
+		let number = Int.random(in: 0...100)
+		if number <= 70 {
+			return String(getIndexOfCurrentAnswer())
+		} else {
+			return getHelpWithUserAnswer()
+		}
+	}
+	
+	func getHardAnswer() -> String {
+		let number = Int.random(in: 0...100)
+		if number <= 50 {
+			return String(getIndexOfCurrentAnswer())
+		} else {
+			return getHelpWithUserAnswer()
+		}
+	}
+	
+	private func getIndexOfBadAnswer(badAnswer: String) -> Int {
+		guard let badAnswer = newGameQuestion[questionLevel].answers.firstIndex(of: badAnswer) else {
+			return 0
+		}
+		return badAnswer
 	}
 	
 	private func getIndexOfCurrentAnswer() -> Int {

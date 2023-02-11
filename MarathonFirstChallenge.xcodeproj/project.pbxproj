@@ -23,6 +23,7 @@
 		185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */; };
 		185067CF298FFEC50046BC7F /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067CE298FFEC50046BC7F /* UIView + Extensions.swift */; };
 		185067D2298FFF9C0046BC7F /* UIColor+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185067D1298FFF9C0046BC7F /* UIColor+App.swift */; };
+		1888455A29982CE400F95532 /* AudienceAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1888455929982CE400F95532 /* AudienceAlert.swift */; };
 		18FAA541299539FF0043DAD5 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FAA540299539FF0043DAD5 /* AnswerButton.swift */; };
 		AF30F2892996F8E6007DE2C4 /* wrong_answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF30F2862996F8E5007DE2C4 /* wrong_answer.wav */; };
 		AF30F28A2996F8E6007DE2C4 /* right_answer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AF30F2872996F8E6007DE2C4 /* right_answer.wav */; };
@@ -52,6 +53,7 @@
 		185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extensions.swift"; sourceTree = "<group>"; };
 		185067CE298FFEC50046BC7F /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		185067D1298FFF9C0046BC7F /* UIColor+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+App.swift"; sourceTree = "<group>"; };
+		1888455929982CE400F95532 /* AudienceAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudienceAlert.swift; sourceTree = "<group>"; };
 		18FAA540299539FF0043DAD5 /* AnswerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
 		AF30F2862996F8E5007DE2C4 /* wrong_answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = wrong_answer.wav; sourceTree = "<group>"; };
 		AF30F2872996F8E6007DE2C4 /* right_answer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = right_answer.wav; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				185067CC298FFBCD0046BC7F /* UIStackView + Extensions.swift */,
 				EEA375202995A60A00144A41 /* UILabel+App.swift */,
 				18FAA540299539FF0043DAD5 /* AnswerButton.swift */,
+				1888455929982CE400F95532 /* AudienceAlert.swift */,
 			);
 			path = CommonUI;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				181298C72996A0B900A39E64 /* GameBrain.swift in Sources */,
 				185067C6298FFB380046BC7F /* MainGameViewController.swift in Sources */,
 				039E2C632998014900FB2159 /* State.swift in Sources */,
+				1888455A29982CE400F95532 /* AudienceAlert.swift in Sources */,
 				185067CA298FFB510046BC7F /* ResultViewController.swift in Sources */,
 				185067CD298FFBCD0046BC7F /* UIStackView + Extensions.swift in Sources */,
 				1850676B298FF28E0046BC7F /* AppDelegate.swift in Sources */,

@@ -152,6 +152,7 @@ class AnswerViewController: UIViewController {
 		super.viewWillAppear(animated)
 		setHelpButtonEnabled()
 		setMistakeButtonEnabled()
+		setAudienceButtonEnabled()
 	}
 	
 	private func setupViews() {
@@ -234,7 +235,7 @@ class AnswerViewController: UIViewController {
 		case 5:
 			timerImageView.image = UIImage(named: Constants.timerWarningImage)
 			secondsLabel.textColor = .timerItemRedColor
-		default:break
+		default: break
 		}
 	}
 	
@@ -334,11 +335,24 @@ class AnswerViewController: UIViewController {
 	}
 	
 	@objc private func audienceButtonTapped() {
-		print("audienceButtonTapped")
+		let alert = AudienceAlert()
+		alert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+		alert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+		self.present(alert, animated: true, completion: nil)
+		gameBrain.audienceButtonIsEnabled = false
+		setAudienceButtonEnabled()
+	}
+	func setAudienceButtonEnabled() {
+		if gameBrain.audienceButtonIsEnabled {
+			audienceButton.isEnabled = gameBrain.audienceButtonIsEnabled
+			audienceButton.alpha = 1
+		} else {
+			audienceButton.isEnabled = gameBrain.audienceButtonIsEnabled
+			audienceButton.alpha = 0.5
+		}
 	}
 	
 	@objc private func callButtonTapped() {
-		print("callButtonTapped")
 	}
 	
 	//MARK: - setConstraints
