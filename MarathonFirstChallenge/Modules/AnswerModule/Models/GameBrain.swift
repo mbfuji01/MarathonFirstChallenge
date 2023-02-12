@@ -119,10 +119,6 @@ class GameBrain {
 	}
 	
 	func getHelpWithUserAnswer() -> String {
-		let answers = [newGameQuestion[questionLevel].answers[0],
-					   newGameQuestion[questionLevel].answers[1],
-					   newGameQuestion[questionLevel].answers[2],
-					   newGameQuestion[questionLevel].answers[3]]
 		let randomNumber = Int.random(in: 0..<4)
 		return String(getIndexOfBadAnswer(badAnswer: newGameQuestion[questionLevel].answers[randomNumber]))
 	}
